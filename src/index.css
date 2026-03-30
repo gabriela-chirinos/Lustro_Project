@@ -1,0 +1,329 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ──────────────────────────────── */
+:root {
+  --cream:      #F5F0E8;
+  --parchment:  #EDE6D6;
+  --warm-white: #FAF8F4;
+  --charcoal:   #2C2825;
+  --deep:       #1A1714;
+  --taupe:      #B09E8C;
+  --rose-dust:  #C08E9A;
+  --sage:       #8A9C8D;
+  --rust:       #9B6B52;
+  --gold:       #C4A882;
+  --mid:        #6B5E54;
+}
+
+/* ─── SVG Noise Texture ──────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ─── Global Reset & Base ────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* ─── Custom Cursor ──────────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--charcoal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(196, 168, 130, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--gold);
+}
+
+/* ─── Ghost Number Utility ───────────────────────────────── */
+.ghost-number {
+  -webkit-text-stroke: 1px rgba(176, 158, 140, 0.35);
+  color: transparent;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ─── Ticker Keyframes ───────────────────────────────────── */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--taupe);
+  border-radius: 2px;
+}
+
+/* ─── Selection ──────────────────────────────────────────── */
+::selection {
+  background: var(--gold);
+  color: var(--deep);
+}
+
+/* ─── Smooth section transitions ────────────────────────── */
+section {
+  position: relative;
+}
+
+/* ─── Form field focus ───────────────────────────────────── */
+.form-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--taupe);
+  outline: none;
+  width: 100%;
+  padding: 0.75rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.125rem;
+  color: var(--charcoal);
+  transition: border-color 0.25s ease;
+}
+
+.form-field::placeholder {
+  color: var(--taupe);
+  font-style: italic;
+}
+
+.form-field:focus {
+  border-bottom-color: var(--gold);
+}
+
+.form-field.error {
+  border-bottom-color: var(--rose-dust);
+}
+
+/* ─── Utility: full bleed dark section ──────────────────── */
+.section-dark {
+  background-color: var(--deep);
+  color: var(--cream);
+}
+
+.section-parchment {
+  background-color: var(--parchment);
+}
+
+/* ─── Diagonal clip utility ─────────────────────────────── */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+/* ─── Fade-in-up utility for Framer Motion ───────────────── */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE & DEVICE-SPECIFIC
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── iOS / Android Touch Resets ────────────────────────── */
+html {
+  /* Prevent font size inflation on orientation change (iOS) */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  /* Pull-to-refresh disable on mobile */
+  overscroll-behavior-y: none;
+  /* Safe area for notch / home bar */
+  padding-left:   env(safe-area-inset-left);
+  padding-right:  env(safe-area-inset-right);
+}
+
+/* Disable custom cursor on touch devices */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none !important; }
+  button, a, [role="button"] { cursor: pointer; }
+}
+
+/* ─── Touch target minimum (44×44px — Apple HIG & WCAG) ─── */
+button, a, [role="button"], select {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px;
+}
+
+/* ─── Prevent iOS input zoom (font-size must be ≥16px) ───── */
+input, select, textarea {
+  font-size: max(16px, 1rem) !important;
+}
+
+/* ─── iOS momentum scroll on overflow containers ─────────── */
+.overflow-scroll-touch {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
+/* ─── Nav: lock body when mobile menu open ───────────────── */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ─── Mobile (< 768px) ───────────────────────────────────── */
+@media (max-width: 767px) {
+
+  /* Section padding */
+  section {
+    padding-left:  5vw !important;
+    padding-right: 5vw !important;
+  }
+
+  /* Philosophy: stack columns */
+  .philosophy-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    max-width: 100% !important;
+    padding: 5rem 5vw !important;
+  }
+
+  .philosophy-left {
+    padding: 0 !important;
+    position: static !important;
+  }
+
+  .philosophy-right {
+    padding: 0 !important;
+    gap: 3rem !important;
+  }
+
+  /* Rituals: stack the row, hide ghost number */
+  .ritual-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .ritual-ghost { display: none !important; }
+  .ritual-meta  { text-align: left !important; margin-top: 0.5rem; }
+
+  /* Contact: stack columns */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem 0 !important;
+  }
+
+  .contact-left  { padding-right: 0 !important; }
+
+  /* Footer: stack columns */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  /* Timeline: hide ghost year numbers (prevent overflow) */
+  .timeline-ghost-year { display: none !important; }
+
+  /* BackToTop: safe area from home indicator */
+  .back-to-top {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom)) !important;
+    right: 1.25rem !important;
+  }
+
+  /* CTA Strip: stack */
+  .cta-strip-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2rem !important;
+  }
+}
+
+/* ─── Tablet (768px – 1023px) ────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  /* Philosophy: narrower two-col */
+  .philosophy-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 2.5rem !important;
+    padding: 6rem 4vw !important;
+  }
+
+  /* Contact: stack columns */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem 0 !important;
+  }
+
+  /* Footer: two-col */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+/* ─── Desktop (≥ 1024px) ─────────────────────────────────── */
+@media (min-width: 1024px) {
+  /* Re-enable two-col contact on desktop */
+  .contact-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
