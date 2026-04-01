@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import heroVideo from '../assets/video/hero.mp4'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -72,7 +73,7 @@ export default function HeroSection() {
           opacity: 1,
         }}
       >
-        <source src="/src/assets/video/hero.mp4" type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
