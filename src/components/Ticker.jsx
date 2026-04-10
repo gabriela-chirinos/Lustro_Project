@@ -1,13 +1,12 @@
 export default function Ticker() {
   const items = [
-    'Hand Shine',
-    'Deep Conditioning',
-    'Color Revival',
-    'Full Restoration',
-    'Welt Repair',
-    'Sole Resoling',
-    'Leather Stretching',
-    'By Appointment Only',
+  'Hand Shine',
+  'Suede & Nubuck',
+  'Colour Revival',
+  'Full Restoration',
+  'By Appointment Only',
+  'Los Angeles',
+  'Bespoke Shoe Care',
     
   ]
 

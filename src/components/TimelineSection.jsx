@@ -16,7 +16,6 @@ const MILESTONES = [
     title: 'First Studio',
     body: 'Added full colour restoration to the service menu.',
   },
- 
   {
     year: '2015',
     title: 'By Appointment Only',
@@ -24,7 +23,7 @@ const MILESTONES = [
   },
   {
     year: '2026',
-    title: 'Today',
+    title: 'Present',
     body: 'A one-person studio. The same commitment as day one.',
   },
 ]
@@ -80,7 +79,7 @@ export default function TimelineSection() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1rem',
           }}>
             Our History

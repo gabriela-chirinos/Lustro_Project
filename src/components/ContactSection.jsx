@@ -106,7 +106,7 @@ export default function ContactSection() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1.5rem',
           }}>
             Request an Appointment
@@ -150,11 +150,25 @@ export default function ContactSection() {
               fontSize: '0.95rem',
               color: 'var(--mid)',
               lineHeight: 1.7,
+              marginBottom: '1.25rem',
             }}>
               Tuesday – Saturday<br />
               10:00 am – 5:00 pm<br />
               West Hollywood, CA
             </p>
+            <a
+              href="mailto:hello@lustro.studio"
+              style={{
+                fontFamily: 'Epilogue, sans-serif',
+                fontWeight: 300,
+                fontSize: '0.85rem',
+                letterSpacing: '0.08em',
+                color: 'var(--gold)',
+                textDecoration: 'none',
+              }}
+            >
+              hello@lustro.studio
+            </a>
           </div>
         </motion.div>
 
@@ -215,10 +229,7 @@ export default function ContactSection() {
                   <select
                     {...register('service', { required: 'Please select a service.' })}
                     defaultValue=""
-                    style={{
-                      ...fieldStyle(errors.service),
-                      cursor: 'none',
-                    }}
+                    style={fieldStyle(errors.service)}
                   >
                     <option value="" disabled>Service Required</option>
                     {SERVICES.map(s => (

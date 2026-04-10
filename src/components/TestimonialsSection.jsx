@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -38,6 +38,7 @@ const TESTIMONIALS = [
 export default function TestimonialsSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' })
   const intervalRef = useRef(null)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   const startAutoPlay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
@@ -49,6 +50,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     if (!emblaApi) return
     startAutoPlay()
+    emblaApi.on('select', () => setSelectedIndex(emblaApi.selectedScrollSnap()))
     emblaApi.on('pointerDown', () => clearInterval(intervalRef.current))
     emblaApi.on('pointerUp',   startAutoPlay)
     return () => clearInterval(intervalRef.current)
@@ -56,6 +58,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
+      id="testimonials"
       style={{
         background: 'var(--warm-white)',
         padding: '8rem 0',
@@ -76,7 +79,7 @@ export default function TestimonialsSection() {
           fontSize: '0.62rem',
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: 'var(--taupe)',
+          color: 'var(--mid)',
           marginBottom: '1rem',
         }}>
           From the Client
@@ -175,9 +178,10 @@ export default function TestimonialsSection() {
               height: '6px',
               borderRadius: '50%',
               border: 'none',
-              background: i === 0 ? 'var(--gold)' : 'rgba(176,158,140,0.4)',
+              background: i === selectedIndex ? 'var(--gold)' : 'rgba(176,158,140,0.4)',
               cursor: 'none',
-              padding: 0,
+              padding: '10px',
+              boxSizing: 'content-box',
               transition: 'background 0.3s ease',
             }}
             aria-label={`Go to testimonial ${i + 1}`}

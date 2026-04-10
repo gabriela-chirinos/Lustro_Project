@@ -34,6 +34,7 @@ export default function BrushParallax() {
   return (
     <section
       ref={sectionRef}
+      className="brush-parallax-section"
       style={{
         position: 'relative',
         height: '100vh',

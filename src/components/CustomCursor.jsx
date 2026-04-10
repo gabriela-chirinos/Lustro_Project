@@ -9,6 +9,10 @@ export default function CustomCursor() {
     const ring = ringRef.current
     if (!dot || !ring) return
 
+    // Don't activate on touch / coarse-pointer devices
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches
+    if (isTouch) return
+
     let mouseX = 0, mouseY = 0
     let ringX  = 0, ringY  = 0
 

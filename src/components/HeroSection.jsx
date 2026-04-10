@@ -64,6 +64,7 @@ export default function HeroSection() {
         muted
         loop
         playsInline
+        aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
@@ -183,14 +184,15 @@ export default function HeroSection() {
                 cursor: 'none',
               }}
             >
-              Request an Appointment
+              Book a Ritual
             </motion.button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Etymology — bottom right */}
+      {/* Etymology — bottom right (hidden on mobile via .hero-etymology CSS class) */}
       <motion.div
+        className="hero-etymology"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.8 }}

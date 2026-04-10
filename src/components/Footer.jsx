@@ -169,6 +169,22 @@ export default function Footer() {
             >
               Request Appointment →
             </button>
+            <a
+              href="https://instagram.com/lustrostudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: 'Epilogue, sans-serif',
+                fontWeight: 300,
+                fontSize: '0.65rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--gold)',
+                textDecoration: 'none',
+              }}
+            >
+              @lustrostudio →
+            </a>
           </div>
         </div>
       </div>

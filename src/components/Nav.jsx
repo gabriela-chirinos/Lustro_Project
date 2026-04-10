@@ -103,7 +103,7 @@ export default function Nav() {
             fontWeight: 600,
             fontSize: '1.35rem',
             letterSpacing: '0.06em',
-            color: menuOpen ? 'var(--warm-white)' : 'var(--charcoal)',
+            color: menuOpen ? 'var(--warm-white)' : scrolled ? 'var(--charcoal)' : 'var(--gold)',
             textDecoration: 'none',
             position: 'relative',
             zIndex: 201,
@@ -129,13 +129,13 @@ export default function Nav() {
                       fontSize: '0.72rem',
                       letterSpacing: '0.14em',
                       textTransform: 'uppercase',
-                      color: 'var(--mid)',
+                      color: scrolled ? 'var(--mid)' : 'rgba(245,240,232,0.75)',
                       cursor: 'none',
                       padding: '0.25rem 0',
                       transition: 'color 0.2s ease',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--charcoal)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--mid)'}
+                    onMouseEnter={e => e.currentTarget.style.color = scrolled ? 'var(--charcoal)' : 'rgba(245,240,232,1)'}
+                    onMouseLeave={e => e.currentTarget.style.color = scrolled ? 'var(--mid)' : 'rgba(245,240,232,0.75)'}
                   >
                     {label}
                   </button>
@@ -153,14 +153,15 @@ export default function Nav() {
                 fontSize: '0.68rem',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                color: 'var(--charcoal)',
+                color: scrolled ? 'var(--charcoal)' : 'rgba(245,240,232,0.70)',
                 background: 'transparent',
-                border: '1px solid var(--gold)',
+                border: scrolled ? '1px solid var(--gold)' : '1px solid rgba(245,240,232,0.35)',
                 padding: '0.55rem 1.4rem',
                 cursor: 'none',
+                transition: 'color 0.4s ease, border-color 0.4s ease',
               }}
             >
-              Schedule A Refresh
+              Book a Ritual
             </motion.button>
           </>
         )}

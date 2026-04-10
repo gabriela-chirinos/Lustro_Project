@@ -59,17 +59,13 @@ export default function PhilosophySection() {
     <section
       id="philosophy"
       ref={sectionRef}
-      className="philosophy-grid"
       style={{
         background: 'var(--warm-white)',
         padding: '8rem 0',
-        display: 'grid',
-        gridTemplateColumns: '40% 1fr',
-        gap: '0 4rem',
-        maxWidth: '1200px',
-        margin: '0 auto',
+        position: 'relative',
       }}
     >
+      <div className="philosophy-grid" style={{ display: 'grid', gridTemplateColumns: '40% 1fr', gap: '0 4rem', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Left — sticky on desktop */}
       <div ref={leftRef} className="philosophy-left" style={{ padding: '0 4vw 0 5vw', alignSelf: 'start' }}>
         <motion.p
@@ -83,7 +79,7 @@ export default function PhilosophySection() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1.5rem',
           }}
         >
@@ -105,7 +101,7 @@ export default function PhilosophySection() {
           }}
         >
           Hard Work.<br />
-          <em>Everytime. No Shortcuts</em>
+          <em>Every time. No Exceptions.</em>
         </motion.h2>
 
         <motion.p
@@ -168,6 +164,7 @@ export default function PhilosophySection() {
             </p>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   )

@@ -3,22 +3,22 @@ import { motion } from 'framer-motion'
 
 const PAIRS = [
   {
-    label: 'Oxford Restoration',
+    label: 'Cognac Penny Loafer',
     before: { bg: '#4A3832', label: 'Before' },
     after:  { bg: '#8B6350', label: 'After'  },
-    note: 'Full colour revival + conditioning',
+    note: 'Hand shine. Returned to its depth.',
   },
   {
-    label: 'Derby Reconditioning',
+    label: 'Tan Suade Loafer',
     before: { bg: '#5C4840', label: 'Before' },
     after:  { bg: '#9B7B60', label: 'After'  },
-    note: 'Deep conditioning + welt repair',
+    note: 'Water stain removed. Nap fully restored.',
   },
   {
-    label: 'Chelsea Boot Revival',
+    label: 'Cap-Toe Oxford',
     before: { bg: '#3A2E2A', label: 'Before' },
     after:  { bg: '#7A5A48', label: 'After'  },
-    note: 'Dye match + sole edge dressing',
+    note: 'Colour matched by eye. Applied by hand.',
   },
 ]
 

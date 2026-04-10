@@ -199,11 +199,11 @@ body {
   padding-right:  env(safe-area-inset-right);
 }
 
-/* Disable custom cursor on touch devices */
-@media (hover: none) {
-  body { cursor: auto; }
+/* Disable custom cursor on touch / pointer-coarse devices */
+@media (hover: none), (pointer: coarse) {
+  body { cursor: auto !important; }
   .cursor-dot, .cursor-ring { display: none !important; }
-  button, a, [role="button"] { cursor: pointer; }
+  button, a, [role="button"], select, input, textarea { cursor: pointer !important; }
 }
 
 /* ─── Touch target minimum (44×44px — Apple HIG & WCAG) ─── */
@@ -232,10 +232,29 @@ body.menu-open {
 /* ─── Mobile (< 768px) ───────────────────────────────────── */
 @media (max-width: 767px) {
 
+  /* Scale rem base by 12.5% — all rem-based copy sizes scale uniformly */
+  html {
+    font-size: 18px;
+  }
+
   /* Section padding */
   section {
     padding-left:  5vw !important;
     padding-right: 5vw !important;
+  }
+
+  /* Brush parallax: reduce from 100vh to a comfortable 60vh */
+  .brush-parallax-section {
+    height: 60vh !important;
+    min-height: 380px !important;
+  }
+
+  /* Hero: hide etymology corner text on small screens (prevents crowding) */
+  .hero-etymology { display: none !important; }
+
+  /* Hero: nudge content up slightly so scroll indicator has room */
+  #hero > div[style*="position: relative"] {
+    padding-bottom: 3rem;
   }
 
   /* Philosophy: stack columns */

@@ -6,37 +6,37 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const RITUALS = [
-  {
+ {
     num: '01',
     name: 'The Hand Shine',
-    tagline: 'Mirror-bright in under an hour.',
-    description: 'A deep clean, conditioning pass, and five-layer hand wax finish. Bone-burnished to a depth no machine can replicate.',
-    duration: '45 – 60 min',
+    tagline: 'The standard everything else is measured against.',
+    description:
+      'Each pair begins with a thorough clean and a conditioning pass — reading the leather before anything is applied. Five layers of wax follow, worked in by hand and burnished with bone to a depth no machine can replicate.',
     price: 'From $95',
   },
   {
     num: '02',
-    name: 'Deep Conditioning',
-    tagline: 'For leather that has forgotten what it is.',
-    description: 'A multi-day treatment using warm neatsfoot oil and lanolin to revive desiccated grain leather. Recommended for neglected or antique pieces.',
-    duration: '2 – 3 days',
-    price: 'From $140',
+    name: 'Suede & Nubuck',
+    tagline: 'A different material. A different discipline entirely.',
+    description:
+      'Suede and nubuck are not smooth leather — and cannot be treated as such. Their surface, the nap, is raised fibre that water stains, wax crushes, and standard shoe cream damages quietly and permanently. We work dry: surface dirt lifted by crepe brush, stains treated by material type, flattened nap raised back by hand, and a breathable protective finish applied to close. Accepted for dress suede, suede boots, and leather-upper luxury sneakers by select makers.',
+    price: 'From $145',
   },
   {
     num: '03',
     name: 'Colour Revival',
-    tagline: 'Exactly the shade it was meant to be.',
-    description: 'Solvent-based dye is matched by eye to the original colour, applied in thin successive coats, sealed with a topcoat that breathes.',
-    duration: '3 – 5 days',
-    price: 'From $185',
+    tagline: 'Colour returned. Not approximated.',
+    description:
+      'Dye is matched by eye to the original colour — or a considered new direction, if preferred. Applied in thin successive coats with drying time between each, then sealed with a topcoat that breathes. For shoes that have faded, scuffed through to the leather, or simply deserve better than they have received.',
+    price: 'From $180',
   },
   {
     num: '04',
     name: 'Full Restoration',
     tagline: 'The complete conversation.',
-    description: 'A total resurrection: cleaning, conditioning, colour work, welt inspection, sole assessment, and final high-shine finish. Done once. Done right.',
-    duration: '5 – 7 days',
-    price: 'From $320',
+    description:
+      'A total resurrection — the closest thing to starting over without replacing what cannot be replaced. Every step: deep clean, conditioning treatment, colour work, welt and sole inspection, edge dressing, final mirror finish. Each pair is assessed individually before we begin, and documented when it leaves. Done once. Done right.',
+    price: 'From $295',
   },
 ]
 
@@ -87,7 +87,7 @@ export default function RitualsSection() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1rem',
           }}>
             The Rituals

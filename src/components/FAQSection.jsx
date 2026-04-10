@@ -2,14 +2,13 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const FAQS = [
- 
   {
     q: 'Do you work on sneakers?',
-    a: 'We focus exclusively on leather-soled dress shoes, boots, and leather-upper shoes. We do not work on athletic footwear, rubber-soled sneakers, or fabric uppers.',
+    a: 'Selectively, yes. We work on leather and suede uppers - If your sneakers were designed to be worn with a tailored trouser — and made by someone who cares about the leather, we want to see it. Makers like Common Projects, Maison Margiela  etc. We don\'t accept athletic footwear: rubber or mesh uppers, anything built for a court or a track. If it\'s a designer sneaker you\'d hesitate to scuff — it probably qualifies . Send us a photograph when you book if you\'re unsure.',
   },
   {
     q: 'What brands do you service?',
-    a: "We work with all quality leather footwear — from Alden and Allen Edmonds to Saint Laurent, Berluti,Ferragamo and John Lobb. If it's made well, we can restore it.",
+    a: "We work with all quality leather footwear — from Alden and Allen Edmonds to Saint Laurent, Berluti, Ferragamo , Crockett & Jones, John Lobb, etc. If it's made well, we can restore it.",
   },
   {
     q: 'How long does a full restoration take?',
@@ -17,7 +16,7 @@ const FAQS = [
   },
   {
     q: 'Do I need to ship my shoes or can I drop off?',
-    a: 'We accept both. Our studio is in West Hollywood by appointment. We also accept carefully packaged shoes shipped to our studio address, provided upon booking.',
+    a: 'We serve the greater Los Angeles area directly — pickup and return are coordinated at the time of booking. For clients outside of LA, shipping is an option. Reach out and we\'ll work out the details together.',
   },
   {
     q: 'What products do you use?',
@@ -25,7 +24,7 @@ const FAQS = [
   },
   {
     q: 'Do you offer a guarantee?',
-    a: "We stand behind our work. If you're not satisfied with the result, bring the shoes back within 48hrs and we'll make it right at no additional charge.",
+    a: " Every pair that leaves carries our name on the result. If the work doesn't meet the standard agreed at consultation, we will address it — completely, and at no additional charge.",
   },
 ]
 
@@ -131,7 +130,7 @@ export default function FAQSection() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1rem',
           }}>
             Questions
@@ -140,9 +139,11 @@ export default function FAQSection() {
             fontFamily: '"Playfair Display", serif',
             fontWeight: 700,
             fontSize: 'clamp(2rem, 3.5vw, 3rem)',
+            lineHeight: 1.15,
             color: 'var(--charcoal)',
           }}>
-            FAQs
+            Common questions.<br />
+            <em style={{ fontWeight: 400 }}>Honest answers.</em>
           </h2>
         </motion.div>
 
