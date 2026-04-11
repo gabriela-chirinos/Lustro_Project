@@ -133,7 +133,7 @@ export default function FAQSection() {
             color: 'var(--mid)',
             marginBottom: '1rem',
           }}>
-            Questions
+           FAQ
           </p>
           <h2 style={{
             fontFamily: '"Playfair Display", serif',
