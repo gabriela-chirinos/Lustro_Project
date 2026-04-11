@@ -52,10 +52,10 @@ export default function Footer() {
           </p>
           <p style={{
             fontFamily: 'Epilogue, sans-serif',
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: '0.58rem',
             letterSpacing: '0.12em',
-            color: 'rgba(196,168,130,0.4)',
+            color: 'rgba(196,168,130,0.72)',
             lineHeight: 1.8,
             textTransform: 'uppercase',
             marginBottom: '1.5rem',
@@ -67,10 +67,10 @@ export default function Footer() {
           </p>
           <p style={{
             fontFamily: '"Cormorant Garamond", serif',
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: '0.95rem',
             lineHeight: 1.75,
-            color: 'rgba(176,158,140,0.6)',
+            color: 'rgba(245,240,232,0.65)',
             maxWidth: '280px',
           }}>
             Bespoke shoe care &amp; leather restoration. Los Angeles. Est. 1988.
@@ -85,7 +85,7 @@ export default function Footer() {
             fontSize: '0.6rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(196,168,130,0.5)',
+            color: 'rgba(196,168,130,0.72)',
             marginBottom: '1.5rem',
           }}>
             Navigation
@@ -99,16 +99,16 @@ export default function Footer() {
                     background: 'none',
                     border: 'none',
                     fontFamily: 'Epilogue, sans-serif',
-                    fontWeight: 300,
+                    fontWeight: 400,
                     fontSize: '0.8rem',
                     letterSpacing: '0.08em',
-                    color: 'var(--taupe)',
+                    color: 'rgba(245,240,232,0.72)',
                     cursor: 'none',
                     transition: 'color 0.2s ease',
                     padding: 0,
                   }}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--taupe)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(245,240,232,0.72)'}
                 >
                   {label}
                 </button>
@@ -125,23 +125,23 @@ export default function Footer() {
             fontSize: '0.6rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(196,168,130,0.5)',
+            color: 'rgba(196,168,130,0.72)',
             marginBottom: '1.5rem',
           }}>
             Studio
           </p>
           <div style={{
             fontFamily: '"Cormorant Garamond", serif',
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: '0.95rem',
             lineHeight: 1.8,
-            color: 'rgba(176,158,140,0.6)',
+            color: 'rgba(245,240,232,0.65)',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
           }}>
             <div>
-              <p style={{ color: 'var(--taupe)' }}>West Hollywood, CA</p>
+              <p style={{ color: 'rgba(245,240,232,0.82)' }}>West Hollywood, CA</p>
               <p>By Appointment Only</p>
             </div>
             <div>
@@ -175,7 +175,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               style={{
                 fontFamily: 'Epilogue, sans-serif',
-                fontWeight: 300,
+                fontWeight: 400,
                 fontSize: '0.65rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
@@ -191,7 +191,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{
-        borderTop: '1px solid rgba(176,158,140,0.1)',
+        borderTop: '1px solid rgba(176,158,140,0.15)',
         paddingTop: '2rem',
         display: 'flex',
         justifyContent: 'space-between',
@@ -201,20 +201,20 @@ export default function Footer() {
       }}>
         <p style={{
           fontFamily: 'Epilogue, sans-serif',
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: '0.62rem',
           letterSpacing: '0.1em',
-          color: 'rgba(176,158,140,0.35)',
+          color: 'rgba(176,158,140,0.6)',
           textTransform: 'uppercase',
         }}>
           © {new Date().getFullYear()} Lustro. All rights reserved.
         </p>
         <p style={{
           fontFamily: 'Epilogue, sans-serif',
-          fontWeight: 300,
+          fontWeight: 400,
           fontSize: '0.62rem',
           letterSpacing: '0.1em',
-          color: 'rgba(176,158,140,0.25)',
+          color: 'rgba(176,158,140,0.5)',
           textTransform: 'uppercase',
         }}>
           Los Angeles · Est. 1988

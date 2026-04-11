@@ -237,6 +237,11 @@ body.menu-open {
     font-size: 18px;
   }
 
+  /* Bump body copy from light (300) to regular (400) — 300 weight is too thin on mobile displays */
+  section p {
+    font-weight: 400 !important;
+  }
+
   /* Section padding */
   section {
     padding-left:  5vw !important;
