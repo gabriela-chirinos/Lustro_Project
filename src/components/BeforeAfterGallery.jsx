@@ -1,23 +1,30 @@
 import { useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 
+import beforeLoafer from '../assets/images/before_loafer.png'
+import afterLoafer  from '../assets/images/after_loafer.png'
+import beforeSuade  from '../assets/images/before_suade.png'
+import afterSuade   from '../assets/images/after_suade.png'
+import beforeOxford from '../assets/images/before_oxford.png'
+import afterOxford  from '../assets/images/after_oxford.png'
+
 const PAIRS = [
   {
     label: 'Cognac Penny Loafer',
-    before: { bg: '#4A3832', label: 'Before' },
-    after:  { bg: '#8B6350', label: 'After'  },
+    before: { src: beforeLoafer, label: 'Before' },
+    after:  { src: afterLoafer,  label: 'After'  },
     note: 'Hand shine. Returned to its depth.',
   },
   {
-    label: 'Tan Suade Loafer',
-    before: { bg: '#5C4840', label: 'Before' },
-    after:  { bg: '#9B7B60', label: 'After'  },
+    label: 'Tan Suede Loafer',
+    before: { src: beforeSuade, label: 'Before' },
+    after:  { src: afterSuade,  label: 'After'  },
     note: 'Water stain removed. Nap fully restored.',
   },
   {
     label: 'Cap-Toe Oxford',
-    before: { bg: '#3A2E2A', label: 'Before' },
-    after:  { bg: '#7A5A48', label: 'After'  },
+    before: { src: beforeOxford, label: 'Before' },
+    after:  { src: afterOxford,  label: 'After'  },
     note: 'Colour matched by eye. Applied by hand.',
   },
 ]
@@ -34,9 +41,9 @@ function BeforeAfterSlider({ pair }) {
     setPosition(pct)
   }, [])
 
-  const onMouseDown = (e) => { dragging.current = true; updatePosition(e.clientX) }
-  const onMouseMove = (e) => { if (dragging.current) updatePosition(e.clientX) }
-  const onMouseUp   = () => { dragging.current = false }
+  const onMouseDown  = (e) => { dragging.current = true; updatePosition(e.clientX) }
+  const onMouseMove  = (e) => { if (dragging.current) updatePosition(e.clientX) }
+  const onMouseUp    = () => { dragging.current = false }
   const onTouchStart = (e) => { dragging.current = true; updatePosition(e.touches[0].clientX) }
   const onTouchMove  = (e) => { if (dragging.current) updatePosition(e.touches[0].clientX) }
   const onTouchEnd   = () => { dragging.current = false }
@@ -66,19 +73,34 @@ function BeforeAfterSlider({ pair }) {
           style={{
             position: 'absolute',
             inset: 0,
-            background: pair.after.bg,
             display: 'flex',
             alignItems: 'flex-end',
             padding: '1.25rem',
           }}
         >
+          <img
+            src={pair.after.src}
+            alt={`${pair.label} — after`}
+            draggable={false}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              pointerEvents: 'none',
+            }}
+          />
           <span style={{
+            position: 'relative',
+            zIndex: 1,
             fontFamily: 'Epilogue, sans-serif',
             fontWeight: 300,
             fontSize: '0.6rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(245,240,232,0.6)',
+            color: 'rgba(245,240,232,0.7)',
           }}>
             {pair.after.label}
           </span>
@@ -90,19 +112,34 @@ function BeforeAfterSlider({ pair }) {
             position: 'absolute',
             inset: 0,
             clipPath: `inset(0 ${100 - position}% 0 0)`,
-            background: pair.before.bg,
             display: 'flex',
             alignItems: 'flex-end',
             padding: '1.25rem',
           }}
         >
+          <img
+            src={pair.before.src}
+            alt={`${pair.label} — before`}
+            draggable={false}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              pointerEvents: 'none',
+            }}
+          />
           <span style={{
+            position: 'relative',
+            zIndex: 1,
             fontFamily: 'Epilogue, sans-serif',
             fontWeight: 300,
             fontSize: '0.6rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(245,240,232,0.4)',
+            color: 'rgba(245,240,232,0.5)',
           }}>
             {pair.before.label}
           </span>
@@ -116,7 +153,7 @@ function BeforeAfterSlider({ pair }) {
             bottom: 0,
             left: `${position}%`,
             width: '1px',
-            background: 'rgba(196,168,130,0.4)',
+            background: 'rgba(196,168,130,0.6)',
             transform: 'translateX(-50%)',
             zIndex: 2,
           }}
@@ -161,7 +198,7 @@ function BeforeAfterSlider({ pair }) {
           fontWeight: 300,
           fontSize: '0.62rem',
           letterSpacing: '0.1em',
-          color: 'var(--taupe)',
+          color: 'var(--mid)',
           textTransform: 'uppercase',
         }}>
           {pair.note}
@@ -195,7 +232,7 @@ export default function BeforeAfterGallery() {
             fontSize: '0.62rem',
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--taupe)',
+            color: 'var(--mid)',
             marginBottom: '1rem',
           }}>
             Before &amp; After

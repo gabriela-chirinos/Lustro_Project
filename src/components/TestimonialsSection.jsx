@@ -168,24 +168,31 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Dot indicators */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '2.5rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '0.25rem', marginTop: '2.5rem' }}>
         {TESTIMONIALS.map((_, i) => (
           <button
             key={i}
             onClick={() => emblaApi?.scrollTo(i)}
+            aria-label={`Go to testimonial ${i + 1}`}
             style={{
+              background: 'transparent',
+              border: 'none',
+              padding: '8px 6px',
+              cursor: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <span style={{
+              display: 'block',
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              border: 'none',
               background: i === selectedIndex ? 'var(--gold)' : 'rgba(176,158,140,0.4)',
-              cursor: 'none',
-              padding: '10px',
-              boxSizing: 'content-box',
               transition: 'background 0.3s ease',
-            }}
-            aria-label={`Go to testimonial ${i + 1}`}
-          />
+            }} />
+          </button>
         ))}
       </div>
     </section>
