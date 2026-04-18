@@ -213,8 +213,8 @@ export default function ContactSection() {
               href="mailto:hello@lustro.studio" // TODO: Replace with real email before launch
               style={{
                 fontFamily: 'Epilogue, sans-serif',
-                fontWeight: 300,
-                fontSize: '0.85rem',
+                fontWeight: 500,
+                fontSize: '0.9rem',
                 letterSpacing: '0.08em',
                 color: 'var(--gold)',
                 textDecoration: 'none',
@@ -255,9 +255,9 @@ export default function ContactSection() {
                   </span>
                   <span style={{
                     fontFamily: '"Cormorant Garamond", serif',
-                    fontWeight: 300,
+                    fontWeight: 400,
                     fontSize: '0.95rem',
-                    color: 'var(--mid)',
+                    color: 'var(--charcoal)',
                     lineHeight: 1.6,
                   }}>
                     {step}

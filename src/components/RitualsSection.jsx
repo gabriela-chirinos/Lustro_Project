@@ -162,10 +162,10 @@ export default function RitualsSection() {
                 </p>
                 <p style={{
                   fontFamily: '"Cormorant Garamond", serif',
-                  fontWeight: 300,
+                  fontWeight: 400,
                   fontSize: '1rem',
                   lineHeight: 1.75,
-                  color: 'var(--mid)',
+                  color: 'var(--charcoal)',
                   maxWidth: '480px',
                 }}>
                   {description}

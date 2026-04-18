@@ -52,25 +52,25 @@ export default function Footer() {
           </p>
           <p style={{
             fontFamily: 'Epilogue, sans-serif',
-            fontWeight: 400,
-            fontSize: '0.58rem',
+            fontWeight: 500,
+            fontSize: '0.65rem',
             letterSpacing: '0.12em',
-            color: 'rgba(196,168,130,0.72)',
+            color: 'rgba(196,168,130,0.9)',
             lineHeight: 1.8,
             textTransform: 'uppercase',
             marginBottom: '1.5rem',
           }}>
             lus·tro<br />
-            <span style={{ fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.05em', display: 'block', marginTop: '0.2rem' }}>
+            <span style={{ fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.05em', display: 'block', marginTop: '0.2rem', fontWeight: 400 }}>
               to shine, to illuminate,<br />to purify through polish
             </span>
           </p>
           <p style={{
             fontFamily: '"Cormorant Garamond", serif',
-            fontWeight: 400,
-            fontSize: '0.95rem',
+            fontWeight: 500,
+            fontSize: '1.05rem',
             lineHeight: 1.75,
-            color: 'rgba(245,240,232,0.65)',
+            color: 'rgba(245,240,232,0.85)',
             maxWidth: '280px',
           }}>
             Bespoke shoe care &amp; leather restoration. Los Angeles. Est. 1988.

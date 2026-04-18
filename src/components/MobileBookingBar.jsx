@@ -41,10 +41,10 @@ export default function MobileBookingBar() {
         >
           <p style={{
             fontFamily: '"Cormorant Garamond", serif',
-            fontWeight: 300,
+            fontWeight: 400,
             fontStyle: 'italic',
-            fontSize: '0.95rem',
-            color: 'rgba(245,240,232,0.65)',
+            fontSize: '1.05rem',
+            color: 'rgba(245,240,232,0.88)',
           }}>
             Ready to restore your shoes?
           </p>
