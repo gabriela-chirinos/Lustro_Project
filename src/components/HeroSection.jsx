@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } },
+  show: { transition: { staggerChildren: 0.10, delayChildren: 0.2 } },
 }
 
 const lineVariant = {
@@ -169,7 +169,7 @@ export default function HeroSection() {
                 const el = document.getElementById('contact')
                 if (el) window.__lenis?.scrollTo(el, { offset: -80 })
               }}
-              whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)' }}
+              whileHover={{ backgroundColor: 'var(--deep)', color: 'var(--gold)', borderColor: 'var(--deep)' }}
               transition={{ duration: 0.25 }}
               style={{
                 fontFamily: 'Epilogue, sans-serif',
@@ -177,9 +177,9 @@ export default function HeroSection() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--warm-white)',
-                background: 'transparent',
-                border: '1px solid rgba(196,168,130,0.6)',
+                color: 'var(--deep)',
+                background: 'var(--gold)',
+                border: '1px solid var(--gold)',
                 padding: '0.9rem 2.2rem',
                 cursor: 'none',
               }}

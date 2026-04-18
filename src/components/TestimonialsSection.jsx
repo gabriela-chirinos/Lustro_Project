@@ -5,31 +5,31 @@ import useEmblaCarousel from 'embla-carousel-react'
 const TESTIMONIALS = [
   {
     quote: "Brought my Allen Edmonds back from the dead. These are things you don't find anymore.",
-    author: 'D.R.',
+    author: 'David R.',
     role: 'Architect',
     location: 'Silver Lake',
   },
   {
     quote: "I've been going to the same cobbler for twenty years. Then I found Lustro. I don't go anywhere else.",
-    author: 'M.V.',
+    author: 'Michael V.',
     role: 'Attorney',
     location: 'Brentwood',
   },
   {
     quote: "My Saint Laurent Wyatts look better now than the day I bought them.",
-    author: 'J.A.',
+    author: 'Jordan A.',
     role: 'Creative Director',
     location: 'West Hollywood',
   },
   {
     quote: "Quiet, thorough, no upsell. Exactly what I wanted.",
-    author: 'T.K.',
+    author: 'Tyler K.',
     role: 'Producer',
     location: 'Los Angeles',
   },
   {
     quote: "The conditioning treatment on my Lobbs was transformative. You can feel the difference in how the leather moves.",
-    author: 'R.O.',
+    author: 'Rafael O.',
     role: 'Restaurateur',
     location: 'Pasadena',
   },
@@ -158,9 +158,27 @@ export default function TestimonialsSection() {
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   color: 'var(--taupe)',
+                  marginBottom: '0.5rem',
                 }}>
                   {t.role} · {t.location}
                 </p>
+                <div style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} style={{ color: 'var(--gold)', fontSize: '0.7rem' }}>★</span>
+                  ))}
+                  <span style={{
+                    fontFamily: 'Epilogue, sans-serif',
+                    fontWeight: 300,
+                    fontSize: '0.55rem',
+                    letterSpacing: '0.1em',
+                    color: 'var(--taupe)',
+                    marginLeft: '0.5rem',
+                    textTransform: 'uppercase',
+                    alignSelf: 'center',
+                  }}>
+                    via Google
+                  </span>
+                </div>
               </div>
             </div>
           ))}
@@ -177,7 +195,8 @@ export default function TestimonialsSection() {
             style={{
               background: 'transparent',
               border: 'none',
-              padding: '8px 6px',
+              padding: '10px',
+              boxSizing: 'content-box',
               cursor: 'none',
               display: 'flex',
               alignItems: 'center',

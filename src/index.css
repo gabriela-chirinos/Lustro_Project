@@ -41,6 +41,7 @@ body::before {
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll */
+  font-size: 18px; /* +12.5% over 16px browser default — scales all rem-based body/subtext */
 }
 
 body {
@@ -232,9 +233,9 @@ body.menu-open {
 /* ─── Mobile (< 768px) ───────────────────────────────────── */
 @media (max-width: 767px) {
 
-  /* Scale rem base by 12.5% — all rem-based copy sizes scale uniformly */
+  /* Scale rem base — all rem-based copy sizes scale uniformly */
   html {
-    font-size: 18px;
+    font-size: 20px; /* +11% over 18px desktop base */
   }
 
   /* Bump body copy from light (300) to regular (400) — 300 weight is too thin on mobile displays */

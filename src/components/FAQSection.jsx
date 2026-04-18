@@ -3,8 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const FAQS = [
   {
+    q: 'How much does it cost?',
+    a: "Services start from $45 for a sneaker clean, and from $95 for a full hand shine and conditioning. A full restoration — resoling, colour correction, deep leather repair — typically ranges from $180 to $380 depending on the work required. We provide a firm, itemised quote before any work begins. No surprises.", // Note to client: Adjust prices to reflect actual rates before launch
+  },
+  {
     q: 'Do you work on sneakers?',
-    a: 'Selectively, yes. We work on leather and suede uppers - If your sneakers were designed to be worn with a tailored trouser — and made by someone who cares about the leather, we want to see it. Makers like Common Projects, Maison Margiela  etc. We don\'t accept athletic footwear: rubber or mesh uppers, anything built for a court or a track. If it\'s a designer sneaker you\'d hesitate to scuff — it probably qualifies . Send us a photograph when you book if you\'re unsure.',
+    a: 'Selectively, yes. We work on leather and suede uppers. If your sneakers were designed to be worn with a tailored trouser — and made by someone who cares about the leather, we want to see it. Makers like Common Projects, Maison Margiela, Amiri, Golden Goose, Rick Owens, and similar. We don\'t accept athletic footwear: rubber or mesh uppers, anything built for a court or a track. If it\'s a designer sneaker you\'d hesitate to scuff — it probably qualifies. Send us a photograph when you book if you\'re unsure.',
   },
   {
     q: 'What brands do you service?',

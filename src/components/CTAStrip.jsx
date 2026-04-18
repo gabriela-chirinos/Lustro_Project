@@ -62,7 +62,7 @@ export default function CTAStrip() {
             whiteSpace: 'nowrap',
           }}
         >
-          Schedule a Refresh
+          Book a Ritual
         </motion.button>
       </motion.div>
     </section>

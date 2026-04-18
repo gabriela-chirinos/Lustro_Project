@@ -18,6 +18,7 @@ import FAQSection    from './components/FAQSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import Footer        from './components/Footer.jsx'
 import BackToTop     from './components/BackToTop.jsx'
+import MobileBookingBar from './components/MobileBookingBar.jsx'
 import CustomCursor  from './components/CustomCursor.jsx'
 import NotFound      from './pages/NotFound.jsx'
 
@@ -68,9 +69,9 @@ function HomePage() {
       <BeforeAfterGallery />
       <TestimonialsSection />
       <CTAStrip />
-      <TimelineSection />
       <FAQSection />
       <ContactSection />
+      <TimelineSection />
     </motion.div>
   )
 }
@@ -92,6 +93,7 @@ function AppShell() {
       </AnimatePresence>
       <Footer />
       <BackToTop />
+      <MobileBookingBar />
     </>
   )
 }

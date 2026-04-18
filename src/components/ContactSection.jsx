@@ -1,7 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
 import gsap from 'gsap'
+
+// TODO: Replace with real EmailJS credentials before launch
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'   // replace before launch
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // replace before launch
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'   // replace before launch
 
 const SERVICES = [
   'Hand Shine',
@@ -9,6 +15,14 @@ const SERVICES = [
   'Colour Revival',
   'Full Restoration',
   'Not sure — need assessment',
+]
+
+const REFERRAL_SOURCES = [
+  'Instagram',
+  'Google Search',
+  'Word of mouth',
+  'Walked by the studio',
+  'Other',
 ]
 
 function CheckmarkSVG() {
@@ -45,16 +59,37 @@ function CheckmarkSVG() {
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
+  const formRef = useRef(null)
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm()
 
-  const onSubmit = async (_data) => {
-    // Simulate async submission
-    await new Promise(r => setTimeout(r, 600))
-    setSubmitted(true)
+  const onSubmit = async (data) => {
+    setSubmitError(false)
+    try {
+      const fileInput = formRef.current?.querySelector('input[type="file"]')
+      const hasFile = fileInput?.files?.length > 0
+
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone || 'Not provided',
+        service: data.service,
+        notes: data.notes || 'None',
+        referral_source: data.referral_source || 'Not specified',
+        photo_note: hasFile
+          ? `Client attached a photo: ${fileInput.files[0].name}. Follow up to request it if the template does not include attachments.`
+          : 'No photo attached.',
+      }
+
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+      setSubmitted(true)
+    } catch (_err) {
+      setSubmitError(true)
+    }
   }
 
   const fieldStyle = (hasError) => ({
@@ -79,6 +114,17 @@ export default function ContactSection() {
     color: 'var(--rose-dust)',
     marginTop: '0.4rem',
     display: 'block',
+  }
+
+  const eyebrowLabelStyle = {
+    fontFamily: 'Epilogue, sans-serif',
+    fontWeight: 300,
+    fontSize: '0.62rem',
+    letterSpacing: '0.22em',
+    textTransform: 'uppercase',
+    color: 'var(--mid)',
+    display: 'block',
+    marginBottom: '0.5rem',
   }
 
   return (
@@ -154,10 +200,17 @@ export default function ContactSection() {
             }}>
               Tuesday – Saturday<br />
               10:00 am – 5:00 pm<br />
-              West Hollywood, CA
+              <a
+                href="https://maps.google.com/?q=West+Hollywood,+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                West Hollywood, CA {/* TODO: Replace with real Google Maps URL with exact studio address before launch */}
+              </a>
             </p>
             <a
-              href="mailto:hello@lustro.studio"
+              href="mailto:hello@lustro.studio" // TODO: Replace with real email before launch
               style={{
                 fontFamily: 'Epilogue, sans-serif',
                 fontWeight: 300,
@@ -167,8 +220,51 @@ export default function ContactSection() {
                 textDecoration: 'none',
               }}
             >
-              hello@lustro.studio
+              hello@lustro.studio {/* TODO: Replace with real email before launch */}
             </a>
+
+            {/* What happens next */}
+            <div style={{ marginTop: '2.5rem' }}>
+              <p style={{
+                fontFamily: 'Epilogue, sans-serif',
+                fontWeight: 300,
+                fontSize: '0.62rem',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'var(--mid)',
+                marginBottom: '1.25rem',
+              }}>
+                What happens next
+              </p>
+              {[
+                'We review your request and assess the work',
+                'We send you appointment times within 48 hours',
+                'You confirm — we handle everything from there',
+              ].map((step, i) => (
+                <div key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '0.85rem', alignItems: 'flex-start' }}>
+                  <span style={{
+                    fontFamily: 'Epilogue, sans-serif',
+                    fontWeight: 300,
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.12em',
+                    color: 'var(--gold)',
+                    minWidth: '16px',
+                    paddingTop: '0.1rem',
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span style={{
+                    fontFamily: '"Cormorant Garamond", serif',
+                    fontWeight: 300,
+                    fontSize: '0.95rem',
+                    color: 'var(--mid)',
+                    lineHeight: 1.6,
+                  }}>
+                    {step}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -183,6 +279,7 @@ export default function ContactSection() {
             {!submitted ? (
               <motion.form
                 key="form"
+                ref={formRef}
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35 }}
@@ -193,8 +290,12 @@ export default function ContactSection() {
                 {/* Name */}
                 <div>
                   <input
-                    {...register('name', { required: 'Your name is required.' })}
-                    placeholder="Full Name"
+                    {...register('name', {
+                      required: 'Your full name is required.',
+                      validate: v =>
+                        v.trim().split(/\s+/).length >= 2 || 'Please enter your first and last name.',
+                    })}
+                    placeholder="First & Last Name"
                     style={fieldStyle(errors.name)}
                   />
                   {errors.name && <span style={errorStyle}>{errors.name.message}</span>}
@@ -205,7 +306,10 @@ export default function ContactSection() {
                   <input
                     {...register('email', {
                       required: 'Email is required.',
-                      pattern: { value: /\S+@\S+\.\S+/, message: 'Please enter a valid email.' },
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: 'Please enter a valid email address.',
+                      },
                     })}
                     type="email"
                     placeholder="Email Address"
@@ -217,11 +321,18 @@ export default function ContactSection() {
                 {/* Phone */}
                 <div>
                   <input
-                    {...register('phone')}
+                    {...register('phone', {
+                      required: 'Phone number is required.',
+                      pattern: {
+                        value: /^[+\d][\d\s\-().]{6,}$/,
+                        message: 'Please enter a valid phone number.',
+                      },
+                    })}
                     type="tel"
-                    placeholder="Phone (optional)"
-                    style={fieldStyle(false)}
+                    placeholder="Phone Number"
+                    style={fieldStyle(errors.phone)}
                   />
+                  {errors.phone && <span style={errorStyle}>{errors.phone.message}</span>}
                 </div>
 
                 {/* Service */}
@@ -239,43 +350,105 @@ export default function ContactSection() {
                   {errors.service && <span style={errorStyle}>{errors.service.message}</span>}
                 </div>
 
+                {/* How did you hear about us */}
+                <div>
+                  <select
+                    {...register('referral_source')}
+                    defaultValue=""
+                    style={fieldStyle(false)}
+                  >
+                    <option value="" disabled>How did you hear about us?</option>
+                    {REFERRAL_SOURCES.map(s => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Notes */}
                 <div>
                   <textarea
-                    {...register('notes')}
+                    {...register('notes', {
+                      required: 'Please describe your shoes.',
+                      validate: v =>
+                        v.trim().split(/\s+/).filter(Boolean).length >= 3 ||
+                        'Please share a bit more — brand, condition, what you need.',
+                    })}
                     placeholder="Tell us about your shoes — brand, condition, concerns..."
                     rows={4}
                     style={{
-                      ...fieldStyle(false),
+                      ...fieldStyle(errors.notes),
                       resize: 'none',
+                    }}
+                  />
+                  {errors.notes && <span style={errorStyle}>{errors.notes.message}</span>}
+                </div>
+
+                {/* Photo upload */}
+                <div>
+                  <label style={eyebrowLabelStyle}>
+                    Attach a photo (optional)
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid rgba(176,158,140,0.4)',
+                      outline: 'none',
+                      width: '100%',
+                      padding: '0.75rem 0',
+                      fontFamily: '"Cormorant Garamond", serif',
+                      fontSize: '1rem',
+                      color: 'var(--mid)',
                     }}
                   />
                 </div>
 
                 {/* Submit */}
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)' }}
-                  transition={{ duration: 0.25 }}
-                  style={{
+                <div>
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)' }}
+                    transition={{ duration: 0.25 }}
+                    style={{
+                      fontFamily: 'Epilogue, sans-serif',
+                      fontWeight: 500,
+                      fontSize: '0.72rem',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      color: 'var(--charcoal)',
+                      background: 'transparent',
+                      border: '1px solid var(--gold)',
+                      padding: '1rem',
+                      cursor: isSubmitting ? 'wait' : 'none',
+                      opacity: isSubmitting ? 0.6 : 1,
+                      alignSelf: 'flex-start',
+                      minWidth: '200px',
+                    }}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Request'}
+                  </motion.button>
+
+                  <p style={{
                     fontFamily: 'Epilogue, sans-serif',
-                    fontWeight: 500,
-                    fontSize: '0.72rem',
-                    letterSpacing: '0.18em',
+                    fontWeight: 300,
+                    fontSize: '0.58rem',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: 'var(--charcoal)',
-                    background: 'transparent',
-                    border: '1px solid var(--gold)',
-                    padding: '1rem',
-                    cursor: isSubmitting ? 'wait' : 'none',
-                    opacity: isSubmitting ? 0.6 : 1,
-                    alignSelf: 'flex-start',
-                    minWidth: '200px',
-                  }}
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Request'}
-                </motion.button>
+                    color: 'var(--taupe)',
+                    marginTop: '0.75rem',
+                  }}>
+                    Your details are private and never shared.
+                  </p>
+
+                  {submitError && (
+                    <span style={{ ...errorStyle, marginTop: '0.75rem', display: 'block' }}>
+                      Something went wrong. Please email us directly at hello@lustro.studio {/* TODO: Replace with real email before launch */}
+                    </span>
+                  )}
+                </div>
               </motion.form>
             ) : (
               <motion.div

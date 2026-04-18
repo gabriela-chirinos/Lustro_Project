@@ -270,6 +270,38 @@ export default function BeforeAfterGallery() {
             </motion.div>
           ))}
         </div>
+
+        {/* Post-gallery CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          style={{ textAlign: 'center', marginTop: '4rem' }}
+        >
+          <motion.button
+            onClick={() => {
+              const el = document.getElementById('contact')
+              if (el) window.__lenis?.scrollTo(el, { offset: -80 })
+            }}
+            whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)' }}
+            transition={{ duration: 0.25 }}
+            style={{
+              fontFamily: 'Epilogue, sans-serif',
+              fontWeight: 500,
+              fontSize: '0.72rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--charcoal)',
+              background: 'transparent',
+              border: '1px solid var(--gold)',
+              padding: '0.9rem 2.4rem',
+              cursor: 'none',
+            }}
+          >
+            Book a Ritual
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   )

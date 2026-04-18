@@ -38,6 +38,14 @@ const RITUALS = [
       'A total resurrection — the closest thing to starting over without replacing what cannot be replaced. Every step: deep clean, conditioning treatment, colour work, welt and sole inspection, edge dressing, final mirror finish. Each pair is assessed individually before we begin, and documented when it leaves. Done once. Done right.',
     price: 'From $295',
   },
+  {
+    num: '05',
+    name: 'The Sneaker Ritual',
+    tagline: 'Built to move. Restored to last.',
+    description:
+      'For the leather and suede sneakers that deserve more than a wipe-down. Loro Piana, Hermès, Alexander McQueen, Amiri, Golden Goose, Rick Owens, Fendi, Giuseppe Zanotti, Burberry, Vince — if the upper is leather or suede and the maker is someone who thought about it, we will clean it properly. Upper brushed, tongue and lining addressed, sole edges cleaned and finished. A considered result, not a quick pass.',
+    price: 'From $45',
+  },
 ]
 
 export default function RitualsSection() {
@@ -99,7 +107,7 @@ export default function RitualsSection() {
             lineHeight: 1.1,
             color: 'var(--charcoal)',
           }}>
-            Four services.<br />
+            Five services.<br />
             <em style={{ fontWeight: 400 }}>Each one a commitment.</em>
           </h2>
         </motion.div>
@@ -191,6 +199,27 @@ export default function RitualsSection() {
           {/* Bottom border */}
           <div style={{ borderTop: '1px solid rgba(176,158,140,0.25)' }} />
         </div>
+
+        {/* Multi-pair note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{
+            fontFamily: 'Epilogue, sans-serif',
+            fontWeight: 300,
+            fontSize: '0.72rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'var(--taupe)',
+            marginTop: '2rem',
+            textAlign: 'center',
+          }}
+        >
+          Bringing more than one pair?{' '}
+          <span style={{ color: 'var(--gold)' }}>Ask about our multi-pair rate.</span>
+        </motion.p>
       </div>
     </section>
   )
