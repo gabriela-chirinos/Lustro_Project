@@ -389,4 +389,9 @@ body.menu-open {
   .contact-grid {
     grid-template-columns: 1fr 1fr !important;
   }
+
+  /* Mobile header is redundant on desktop — left editorial col handles it */
+  .contact-mobile-header {
+    display: none !important;
+  }
 }

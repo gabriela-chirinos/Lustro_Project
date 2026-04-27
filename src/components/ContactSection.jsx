@@ -67,8 +67,16 @@ export default function ContactSection() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm()
+
+  const formatPhone = (value) => {
+    const digits = value.replace(/\D/g, '').slice(0, 10)
+    if (digits.length <= 3) return digits
+    if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+    return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+  }
 
   const onSubmit = async (data) => {
     setSubmitError(false)
@@ -151,6 +159,38 @@ export default function ContactSection() {
         padding: '8rem 5vw',
       }}
     >
+      {/* Mobile-only section header — contact-left is hidden on mobile so this bridges the gap */}
+      <motion.div
+        className="contact-mobile-header"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7 }}
+        style={{ marginBottom: '2.5rem' }}
+      >
+        <p style={{
+          fontFamily: 'Epilogue, sans-serif',
+          fontWeight: 300,
+          fontSize: '0.62rem',
+          letterSpacing: '0.22em',
+          textTransform: 'uppercase',
+          color: 'var(--mid)',
+          marginBottom: '0.75rem',
+        }}>
+          Request an Appointment
+        </p>
+        <h2 style={{
+          fontFamily: '"Playfair Display", serif',
+          fontWeight: 700,
+          fontSize: 'clamp(1.8rem, 7vw, 2.4rem)',
+          lineHeight: 1.15,
+          color: 'var(--charcoal)',
+        }}>
+          Every restoration<br />
+          <em style={{ fontWeight: 400 }}>begins with a conversation.</em>
+        </h2>
+      </motion.div>
+
       <div className="contact-grid" style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 6rem' }}>
 
         {/* Left — editorial text */}
@@ -331,7 +371,7 @@ export default function ContactSection() {
                     {...register('email', {
                       required: 'Email is required.',
                       pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        value: /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/,
                         message: 'Please enter a valid email address.',
                       },
                     })}
@@ -348,15 +388,26 @@ export default function ContactSection() {
                   <label htmlFor="contact-phone" style={srOnly}>Phone Number</label>
                   <input
                     id="contact-phone"
-                    {...register('phone', {
-                      required: 'Phone number is required.',
-                      pattern: {
-                        value: /^[+\d][\d\s\-().]{6,}$/,
-                        message: 'Please enter a valid phone number.',
-                      },
-                    })}
+                    {...(() => {
+                      const reg = register('phone', {
+                        required: 'Phone number is required.',
+                        pattern: {
+                          value: /^\d{3}-\d{3}-\d{4}$/,
+                          message: 'Please enter a valid phone number.',
+                        },
+                      })
+                      return {
+                        ...reg,
+                        onChange: (e) => {
+                          const formatted = formatPhone(e.target.value)
+                          e.target.value = formatted
+                          setValue('phone', formatted, { shouldValidate: errors.phone ? true : false })
+                          return reg.onChange(e)
+                        },
+                      }
+                    })()}
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder="555-555-5555"
                     style={fieldStyle(errors.phone)}
                     aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
                   />

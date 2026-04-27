@@ -24,7 +24,7 @@ export default function MobileNewsletterPopup() {
     localStorage.setItem(STORAGE_KEY, '1')
   }
 
-  const validate = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
+  const validate = (v) => /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(v)
 
   const handleSubmit = (e) => {
     e.preventDefault()

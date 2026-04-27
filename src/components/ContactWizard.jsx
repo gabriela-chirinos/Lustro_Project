@@ -113,6 +113,13 @@ export default function ContactWizard() {
     formState: { errors },
   } = useForm()
 
+  const formatPhone = (value) => {
+    const digits = value.replace(/\D/g, '').slice(0, 10)
+    if (digits.length <= 3) return digits
+    if (digits.length <= 6) return `${digits.slice(0, 3)}-${digits.slice(3)}`
+    return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
+  }
+
   const step = STEPS[stepIndex]
   const progress = ((stepIndex + 1) / STEPS.length) * 100
 
@@ -353,7 +360,7 @@ export default function ContactWizard() {
                       type="email"
                       {...register('email', {
                         required: 'Email is required.',
-                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email.' },
+                        pattern: { value: /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email.' },
                       })}
                       placeholder="Email Address"
                       style={fieldStyle(errors.email)}
@@ -366,11 +373,22 @@ export default function ContactWizard() {
                     <input
                       id="wiz-phone"
                       type="tel"
-                      {...register('phone', {
-                        required: 'Phone number is required.',
-                        pattern: { value: /^[+\d][\d\s\-().]{6,}$/, message: 'Please enter a valid phone number.' },
-                      })}
-                      placeholder="Phone Number"
+                      {...(() => {
+                        const reg = register('phone', {
+                          required: 'Phone number is required.',
+                          pattern: { value: /^\d{3}-\d{3}-\d{4}$/, message: 'Please enter a valid phone number.' },
+                        })
+                        return {
+                          ...reg,
+                          onChange: (e) => {
+                            const formatted = formatPhone(e.target.value)
+                            e.target.value = formatted
+                            setValue('phone', formatted, { shouldValidate: errors.phone ? true : false })
+                            return reg.onChange(e)
+                          },
+                        }
+                      })()}
+                      placeholder="555-555-5555"
                       style={fieldStyle(errors.phone)}
                       aria-describedby={errors.phone ? 'wiz-phone-error' : undefined}
                     />
