@@ -37,7 +37,7 @@ export default function BackToTop() {
             height: '44px',
             borderRadius: '50%',
             background: 'transparent',
-            border: '1px solid rgba(196,168,130,0.5)',
+            border: '1px solid var(--gold-50)',
             cursor: 'none',
             display: 'flex',
             alignItems: 'center',

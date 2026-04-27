@@ -4,6 +4,7 @@
 
 /* ─── CSS Custom Properties ──────────────────────────────── */
 :root {
+  /* Base palette */
   --cream:      #F5F0E8;
   --parchment:  #EDE6D6;
   --warm-white: #FAF8F4;
@@ -15,6 +16,43 @@
   --rust:       #9B6B52;
   --gold:       #C4A882;
   --mid:        #6B5E54;
+
+  /* ─── Gold opacity scale (rgb 196,168,130) ─── */
+  --gold-10:  rgba(196,168,130,0.10);
+  --gold-15:  rgba(196,168,130,0.15);
+  --gold-35:  rgba(196,168,130,0.35);
+  --gold-40:  rgba(196,168,130,0.40);
+  --gold-50:  rgba(196,168,130,0.50);
+  --gold-60:  rgba(196,168,130,0.60);
+  --gold-72:  rgba(196,168,130,0.72);
+  --gold-90:  rgba(196,168,130,0.90);
+
+  /* ─── Taupe opacity scale (rgb 176,158,140) ─── */
+  --taupe-15: rgba(176,158,140,0.15);
+  --taupe-20: rgba(176,158,140,0.20);
+  --taupe-25: rgba(176,158,140,0.25);
+  --taupe-30: rgba(176,158,140,0.30);
+  --taupe-35: rgba(176,158,140,0.35);
+  --taupe-40: rgba(176,158,140,0.40);
+  --taupe-50: rgba(176,158,140,0.50);
+  --taupe-60: rgba(176,158,140,0.60);
+
+  /* ─── Cream opacity scale (rgb 245,240,232) ─── */
+  --cream-35: rgba(245,240,232,0.35);
+  --cream-50: rgba(245,240,232,0.50);
+  --cream-65: rgba(245,240,232,0.65);
+  --cream-70: rgba(245,240,232,0.70);
+  --cream-72: rgba(245,240,232,0.72);
+  --cream-75: rgba(245,240,232,0.75);
+  --cream-82: rgba(245,240,232,0.82);
+  --cream-85: rgba(245,240,232,0.85);
+  --cream-88: rgba(245,240,232,0.88);
+
+  /* ─── Deep opacity scale (rgb 26,23,20) ─── */
+  --deep-30:  rgba(26,23,20,0.30);
+  --deep-55:  rgba(26,23,20,0.55);
+  --deep-72:  rgba(26,23,20,0.72);
+  --deep-95:  rgba(26,23,20,0.95);
 }
 
 /* ─── SVG Noise Texture ──────────────────────────────────── */
@@ -73,7 +111,7 @@ body {
   position: fixed;
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(196, 168, 130, 0.6);
+  border: 1px solid var(--gold-60);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
@@ -90,7 +128,7 @@ body:has(button:hover) .cursor-ring {
 
 /* ─── Ghost Number Utility ───────────────────────────────── */
 .ghost-number {
-  -webkit-text-stroke: 1px rgba(176, 158, 140, 0.35);
+  -webkit-text-stroke: 1px var(--taupe-35);
   color: transparent;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
@@ -291,13 +329,13 @@ body.menu-open {
   .ritual-ghost { display: none !important; }
   .ritual-meta  { text-align: left !important; margin-top: 0.5rem; }
 
-  /* Contact: stack columns */
+  /* Contact: stack columns, hide editorial col (wizard has its own headings) */
   .contact-grid {
     grid-template-columns: 1fr !important;
-    gap: 3rem 0 !important;
+    gap: 0 !important;
   }
 
-  .contact-left  { padding-right: 0 !important; }
+  .contact-left  { display: none !important; }
 
   /* Footer: stack columns */
   .footer-grid {
@@ -308,9 +346,9 @@ body.menu-open {
   /* Timeline: hide ghost year numbers (prevent overflow) */
   .timeline-ghost-year { display: none !important; }
 
-  /* BackToTop: safe area from home indicator */
+  /* BackToTop: sit above MobileBookingBar (~72px) + safe area */
   .back-to-top {
-    bottom: calc(1.5rem + env(safe-area-inset-bottom)) !important;
+    bottom: calc(5.5rem + env(safe-area-inset-bottom)) !important;
     right: 1.25rem !important;
   }
 

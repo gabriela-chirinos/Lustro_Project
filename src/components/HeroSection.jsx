@@ -82,7 +82,7 @@ export default function HeroSection() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to bottom, rgba(26,23,20,0.55) 0%, rgba(26,23,20,0.3) 50%, rgba(26,23,20,0.72) 100%)',
+          background: 'linear-gradient(to bottom, var(--deep-55) 0%, var(--deep-30) 50%, var(--deep-72) 100%)',
         }}
       />
 
@@ -130,7 +130,7 @@ export default function HeroSection() {
           >
             Old world craft.
           </motion.h1>
-          <motion.h1
+          <motion.p
             variants={lineVariant}
             style={{
               fontFamily: '"Playfair Display", serif',
@@ -143,7 +143,7 @@ export default function HeroSection() {
             }}
           >
             Modern standards.
-          </motion.h1>
+          </motion.p>
 
           {/* Subtext */}
           <motion.p
@@ -152,7 +152,7 @@ export default function HeroSection() {
               fontFamily: '"Cormorant Garamond", serif',
               fontWeight: 300,
               fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-              color: 'rgba(245,240,232,0.72)',
+              color: 'var(--cream-72)',
               maxWidth: '460px',
               lineHeight: 1.6,
               marginBottom: '2.5rem',
@@ -209,12 +209,12 @@ export default function HeroSection() {
           fontWeight: 300,
           fontSize: '0.58rem',
           letterSpacing: '0.12em',
-          color: 'rgba(196,168,130,0.5)',
+          color: 'var(--gold-50)',
           lineHeight: 1.7,
           textTransform: 'uppercase',
         }}>
           lus·tro<br />
-          <span style={{ fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.05em', color: 'rgba(196,168,130,0.4)' }}>
+          <span style={{ fontStyle: 'italic', textTransform: 'none', letterSpacing: '0.05em', color: 'var(--gold-40)' }}>
             to shine, to illuminate, to purify through polish
           </span>
         </p>
@@ -237,13 +237,13 @@ export default function HeroSection() {
           gap: '8px',
         }}
       >
-        <span style={{ fontFamily: 'Epilogue, sans-serif', fontWeight: 300, fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(196,168,130,0.4)' }}>
+        <span style={{ fontFamily: 'Epilogue, sans-serif', fontWeight: 300, fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold-40)' }}>
           Scroll
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ width: '1px', height: '32px', background: 'rgba(196,168,130,0.35)' }}
+          style={{ width: '1px', height: '32px', background: 'var(--gold-35)' }}
         />
       </motion.div>
     </section>

@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import gsap from 'gsap'
+import { useBreakpoint } from '../hooks/useBreakpoint.js'
+import ContactWizard from './ContactWizard'
 
 // TODO: Replace with real EmailJS credentials before launch
 const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'   // replace before launch
@@ -58,6 +60,7 @@ function CheckmarkSVG() {
 }
 
 export default function ContactSection() {
+  const { isMobile } = useBreakpoint()
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState(false)
   const formRef = useRef(null)
@@ -95,7 +98,7 @@ export default function ContactSection() {
   const fieldStyle = (hasError) => ({
     background: 'transparent',
     border: 'none',
-    borderBottom: `1px solid ${hasError ? 'var(--rose-dust)' : 'rgba(176,158,140,0.4)'}`,
+    borderBottom: `1px solid ${hasError ? 'var(--rose-dust)' : 'var(--taupe-40)'}`,
     outline: 'none',
     width: '100%',
     padding: '0.75rem 0',
@@ -125,6 +128,19 @@ export default function ContactSection() {
     color: 'var(--mid)',
     display: 'block',
     marginBottom: '0.5rem',
+  }
+
+  // Visually hidden but accessible to screen readers
+  const srOnly = {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0,0,0,0)',
+    whiteSpace: 'nowrap',
+    border: 0,
   }
 
   return (
@@ -178,7 +194,7 @@ export default function ContactSection() {
           }}>
             We respond to all requests within 24–48 hours. Please describe the condition of your shoes in as much detail as you can — photographs are welcome.
           </p>
-          <div style={{ borderTop: '1px solid rgba(176,158,140,0.25)', paddingTop: '2rem' }}>
+          <div style={{ borderTop: '1px solid var(--taupe-25)', paddingTop: '2rem' }}>
             <p style={{
               fontFamily: 'Epilogue, sans-serif',
               fontWeight: 300,
@@ -268,13 +284,16 @@ export default function ContactSection() {
           </div>
         </motion.div>
 
-        {/* Right — form or confirmation */}
+        {/* Right — form, wizard (mobile), or confirmation */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
+          {isMobile ? (
+            <ContactWizard />
+          ) : (
           <AnimatePresence mode="wait">
             {!submitted ? (
               <motion.form
@@ -289,7 +308,9 @@ export default function ContactSection() {
               >
                 {/* Name */}
                 <div>
+                  <label htmlFor="contact-name" style={srOnly}>Full Name</label>
                   <input
+                    id="contact-name"
                     {...register('name', {
                       required: 'Your full name is required.',
                       validate: v =>
@@ -297,13 +318,16 @@ export default function ContactSection() {
                     })}
                     placeholder="First & Last Name"
                     style={fieldStyle(errors.name)}
+                    aria-describedby={errors.name ? 'contact-name-error' : undefined}
                   />
-                  {errors.name && <span style={errorStyle}>{errors.name.message}</span>}
+                  {errors.name && <span id="contact-name-error" role="alert" style={errorStyle}>{errors.name.message}</span>}
                 </div>
 
                 {/* Email */}
                 <div>
+                  <label htmlFor="contact-email" style={srOnly}>Email Address</label>
                   <input
+                    id="contact-email"
                     {...register('email', {
                       required: 'Email is required.',
                       pattern: {
@@ -314,13 +338,16 @@ export default function ContactSection() {
                     type="email"
                     placeholder="Email Address"
                     style={fieldStyle(errors.email)}
+                    aria-describedby={errors.email ? 'contact-email-error' : undefined}
                   />
-                  {errors.email && <span style={errorStyle}>{errors.email.message}</span>}
+                  {errors.email && <span id="contact-email-error" role="alert" style={errorStyle}>{errors.email.message}</span>}
                 </div>
 
                 {/* Phone */}
                 <div>
+                  <label htmlFor="contact-phone" style={srOnly}>Phone Number</label>
                   <input
+                    id="contact-phone"
                     {...register('phone', {
                       required: 'Phone number is required.',
                       pattern: {
@@ -331,28 +358,34 @@ export default function ContactSection() {
                     type="tel"
                     placeholder="Phone Number"
                     style={fieldStyle(errors.phone)}
+                    aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
                   />
-                  {errors.phone && <span style={errorStyle}>{errors.phone.message}</span>}
+                  {errors.phone && <span id="contact-phone-error" role="alert" style={errorStyle}>{errors.phone.message}</span>}
                 </div>
 
                 {/* Service */}
                 <div>
+                  <label htmlFor="contact-service" style={srOnly}>Service Required</label>
                   <select
+                    id="contact-service"
                     {...register('service', { required: 'Please select a service.' })}
                     defaultValue=""
                     style={fieldStyle(errors.service)}
+                    aria-describedby={errors.service ? 'contact-service-error' : undefined}
                   >
                     <option value="" disabled>Service Required</option>
                     {SERVICES.map(s => (
                       <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
-                  {errors.service && <span style={errorStyle}>{errors.service.message}</span>}
+                  {errors.service && <span id="contact-service-error" role="alert" style={errorStyle}>{errors.service.message}</span>}
                 </div>
 
                 {/* How did you hear about us */}
                 <div>
+                  <label htmlFor="contact-referral" style={srOnly}>How did you hear about us?</label>
                   <select
+                    id="contact-referral"
                     {...register('referral_source')}
                     defaultValue=""
                     style={fieldStyle(false)}
@@ -366,7 +399,9 @@ export default function ContactSection() {
 
                 {/* Notes */}
                 <div>
+                  <label htmlFor="contact-notes" style={srOnly}>Tell us about your shoes</label>
                   <textarea
+                    id="contact-notes"
                     {...register('notes', {
                       required: 'Please describe your shoes.',
                       validate: v =>
@@ -379,8 +414,9 @@ export default function ContactSection() {
                       ...fieldStyle(errors.notes),
                       resize: 'none',
                     }}
+                    aria-describedby={errors.notes ? 'contact-notes-error' : undefined}
                   />
-                  {errors.notes && <span style={errorStyle}>{errors.notes.message}</span>}
+                  {errors.notes && <span id="contact-notes-error" role="alert" style={errorStyle}>{errors.notes.message}</span>}
                 </div>
 
                 {/* Photo upload */}
@@ -394,7 +430,7 @@ export default function ContactSection() {
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      borderBottom: '1px solid rgba(176,158,140,0.4)',
+                      borderBottom: '1px solid var(--taupe-40)',
                       outline: 'none',
                       width: '100%',
                       padding: '0.75rem 0',
@@ -482,7 +518,7 @@ export default function ContactSection() {
                 }}>
                   We'll review your request and respond within 24–48 hours with appointment availability. Thank you for reaching out.
                 </p>
-                <div style={{ borderTop: '1px solid rgba(176,158,140,0.25)', paddingTop: '1.25rem' }}>
+                <div style={{ borderTop: '1px solid var(--taupe-25)', paddingTop: '1.25rem' }}>
                   <p style={{
                     fontFamily: 'Epilogue, sans-serif',
                     fontWeight: 300,
@@ -497,6 +533,7 @@ export default function ContactSection() {
               </motion.div>
             )}
           </AnimatePresence>
+          )}
         </motion.div>
       </div>
     </section>

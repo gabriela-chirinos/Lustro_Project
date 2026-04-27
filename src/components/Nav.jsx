@@ -87,11 +87,11 @@ export default function Nav() {
           transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease',
           background: menuOpen
             ? 'transparent'
-            : scrolled ? 'rgba(245,240,232,0.88)' : 'transparent',
+            : scrolled ? 'var(--cream-88)' : 'transparent',
           backdropFilter: menuOpen ? 'none' : scrolled ? 'blur(12px)' : 'none',
           borderBottom: menuOpen
             ? '1px solid transparent'
-            : scrolled ? '1px solid rgba(176,158,140,0.2)' : '1px solid transparent',
+            : scrolled ? '1px solid var(--taupe-20)' : '1px solid transparent',
         }}
       >
         {/* Wordmark */}
@@ -129,13 +129,13 @@ export default function Nav() {
                       fontSize: '0.72rem',
                       letterSpacing: '0.14em',
                       textTransform: 'uppercase',
-                      color: scrolled ? 'var(--mid)' : 'rgba(245,240,232,0.75)',
+                      color: scrolled ? 'var(--mid)' : 'var(--cream-75)',
                       cursor: 'none',
                       padding: '0.25rem 0',
                       transition: 'color 0.2s ease',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = scrolled ? 'var(--charcoal)' : 'rgba(245,240,232,1)'}
-                    onMouseLeave={e => e.currentTarget.style.color = scrolled ? 'var(--mid)' : 'rgba(245,240,232,0.75)'}
+                    onMouseEnter={e => e.currentTarget.style.color = scrolled ? 'var(--charcoal)' : 'var(--cream)'}
+                    onMouseLeave={e => e.currentTarget.style.color = scrolled ? 'var(--mid)' : 'var(--cream-75)'}
                   >
                     {label}
                   </button>
@@ -153,9 +153,9 @@ export default function Nav() {
                 fontSize: '0.68rem',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                color: scrolled ? 'var(--charcoal)' : 'rgba(245,240,232,0.70)',
+                color: scrolled ? 'var(--charcoal)' : 'var(--cream-70)',
                 background: 'transparent',
-                border: scrolled ? '1px solid var(--gold)' : '1px solid rgba(245,240,232,0.35)',
+                border: scrolled ? '1px solid var(--gold)' : '1px solid var(--cream-35)',
                 padding: '0.55rem 1.4rem',
                 cursor: 'none',
                 transition: 'color 0.4s ease, border-color 0.4s ease',
@@ -239,7 +239,7 @@ export default function Nav() {
               left: '2.5rem',
               right: '2.5rem',
               height: '1px',
-              background: 'rgba(196,168,130,0.15)',
+              background: 'var(--gold-15)',
             }}
           />
 
@@ -250,7 +250,7 @@ export default function Nav() {
                 key={href}
                 style={{
                   overflow: 'hidden',
-                  borderBottom: '1px solid rgba(196,168,130,0.1)',
+                  borderBottom: '1px solid var(--gold-10)',
                   padding: '0.1rem 0',
                 }}
               >
@@ -295,7 +295,7 @@ export default function Nav() {
                 textTransform: 'uppercase',
                 color: 'var(--gold)',
                 background: 'transparent',
-                border: '1px solid rgba(196,168,130,0.4)',
+                border: '1px solid var(--gold-40)',
                 padding: '0.85rem 2rem',
                 cursor: 'pointer',
                 minHeight: '44px',
@@ -317,7 +317,7 @@ export default function Nav() {
               fontSize: '0.58rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: 'rgba(196,168,130,0.35)',
+              color: 'var(--gold-35)',
             }}
           >
             Los Angeles · Est. 1988 · By Appointment

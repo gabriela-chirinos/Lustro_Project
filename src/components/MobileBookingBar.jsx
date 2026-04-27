@@ -30,9 +30,9 @@ export default function MobileBookingBar() {
             zIndex: 150,
             padding: '1rem 1.5rem',
             paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))',
-            background: 'rgba(26,23,20,0.95)',
+            background: 'var(--deep-95)',
             backdropFilter: 'blur(12px)',
-            borderTop: '1px solid rgba(196,168,130,0.15)',
+            borderTop: '1px solid var(--gold-15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -44,7 +44,7 @@ export default function MobileBookingBar() {
             fontWeight: 400,
             fontStyle: 'italic',
             fontSize: '1.05rem',
-            color: 'rgba(245,240,232,0.88)',
+            color: 'var(--cream-88)',
           }}>
             Ready to restore your shoes?
           </p>

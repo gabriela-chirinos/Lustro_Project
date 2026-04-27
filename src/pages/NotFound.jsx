@@ -33,7 +33,7 @@ export default function NotFound() {
           fontSize: 'clamp(18rem, 40vw, 32rem)',
           fontFamily: '"Playfair Display", serif',
           fontWeight: 700,
-          WebkitTextStroke: '1px rgba(176,158,140,0.2)',
+          WebkitTextStroke: '1px var(--taupe-20)',
           color: 'transparent',
           userSelect: 'none',
           lineHeight: 1,
@@ -89,7 +89,7 @@ export default function NotFound() {
           The shoes might.
         </p>
 
-        <div style={{ height: '1px', width: '40px', background: 'rgba(176,158,140,0.4)', margin: '0.5rem 0' }} />
+        <div style={{ height: '1px', width: '40px', background: 'var(--taupe-40)', margin: '0.5rem 0' }} />
 
         <motion.button
           onClick={goHome}

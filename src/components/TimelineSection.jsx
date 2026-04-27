@@ -107,7 +107,7 @@ export default function TimelineSection() {
               top: 0,
               bottom: 0,
               width: '1px',
-              background: 'rgba(176,158,140,0.3)',
+              background: 'var(--taupe-30)',
             }}
           />
 

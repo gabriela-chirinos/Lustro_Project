@@ -32,15 +32,20 @@ const FAQS = [
   },
 ]
 
-function FAQItem({ q, a, isOpen, onToggle }) {
+function FAQItem({ q, a, isOpen, onToggle, id }) {
+  const panelId = `faq-panel-${id}`
+  const buttonId = `faq-btn-${id}`
   return (
     <div
       style={{
-        borderTop: '1px solid rgba(176,158,140,0.25)',
+        borderTop: '1px solid var(--taupe-25)',
       }}
     >
       <button
+        id={buttonId}
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
         style={{
           width: '100%',
           background: 'none',
@@ -83,6 +88,9 @@ function FAQItem({ q, a, isOpen, onToggle }) {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -161,13 +169,14 @@ export default function FAQSection() {
           {FAQS.map((item, i) => (
             <FAQItem
               key={i}
+              id={i}
               q={item.q}
               a={item.a}
               isOpen={openIndex === i}
               onToggle={() => setOpenIndex(openIndex === i ? null : i)}
             />
           ))}
-          <div style={{ borderTop: '1px solid rgba(176,158,140,0.25)' }} />
+          <div style={{ borderTop: '1px solid var(--taupe-25)' }} />
         </motion.div>
       </div>
     </section>

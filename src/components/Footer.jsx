@@ -55,7 +55,7 @@ export default function Footer() {
             fontWeight: 500,
             fontSize: '0.65rem',
             letterSpacing: '0.12em',
-            color: 'rgba(196,168,130,0.9)',
+            color: 'var(--gold-90)',
             lineHeight: 1.8,
             textTransform: 'uppercase',
             marginBottom: '1.5rem',
@@ -70,7 +70,7 @@ export default function Footer() {
             fontWeight: 500,
             fontSize: '1.05rem',
             lineHeight: 1.75,
-            color: 'rgba(245,240,232,0.85)',
+            color: 'var(--cream-85)',
             maxWidth: '280px',
           }}>
             Bespoke shoe care &amp; leather restoration. Los Angeles. Est. 1988.
@@ -85,7 +85,7 @@ export default function Footer() {
             fontSize: '0.6rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(196,168,130,0.72)',
+            color: 'var(--gold-72)',
             marginBottom: '1.5rem',
           }}>
             Navigation
@@ -102,13 +102,13 @@ export default function Footer() {
                     fontWeight: 400,
                     fontSize: '0.8rem',
                     letterSpacing: '0.08em',
-                    color: 'rgba(245,240,232,0.72)',
+                    color: 'var(--cream-72)',
                     cursor: 'none',
                     transition: 'color 0.2s ease',
                     padding: 0,
                   }}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(245,240,232,0.72)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--cream-72)'}
                 >
                   {label}
                 </button>
@@ -125,7 +125,7 @@ export default function Footer() {
             fontSize: '0.6rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(196,168,130,0.72)',
+            color: 'var(--gold-72)',
             marginBottom: '1.5rem',
           }}>
             Studio
@@ -135,7 +135,7 @@ export default function Footer() {
             fontWeight: 400,
             fontSize: '0.95rem',
             lineHeight: 1.8,
-            color: 'rgba(245,240,232,0.65)',
+            color: 'var(--cream-65)',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
@@ -147,7 +147,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 style={{ color: 'inherit', textDecoration: 'none' }}
               >
-                <p style={{ color: 'rgba(245,240,232,0.82)' }}>West Hollywood, CA {/* TODO: Replace with real Google Maps URL with exact studio address before launch */}</p>
+                <p style={{ color: 'var(--cream-82)' }}>West Hollywood, CA {/* TODO: Replace with real Google Maps URL with exact studio address before launch */}</p>
               </a>
               <p>By Appointment Only</p>
             </div>
@@ -198,7 +198,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{
-        borderTop: '1px solid rgba(176,158,140,0.15)',
+        borderTop: '1px solid var(--taupe-15)',
         paddingTop: '2rem',
         display: 'flex',
         justifyContent: 'space-between',
@@ -211,7 +211,7 @@ export default function Footer() {
           fontWeight: 400,
           fontSize: '0.62rem',
           letterSpacing: '0.1em',
-          color: 'rgba(176,158,140,0.6)',
+          color: 'var(--taupe-60)',
           textTransform: 'uppercase',
         }}>
           © {new Date().getFullYear()} Lustro. All rights reserved.
@@ -221,7 +221,7 @@ export default function Footer() {
           fontWeight: 400,
           fontSize: '0.62rem',
           letterSpacing: '0.1em',
-          color: 'rgba(176,158,140,0.5)',
+          color: 'var(--taupe-50)',
           textTransform: 'uppercase',
         }}>
           Los Angeles · Est. 1988

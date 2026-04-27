@@ -140,7 +140,7 @@ export default function TestimonialsSection() {
                 "{t.quote}"
               </blockquote>
 
-              <div style={{ borderTop: '1px solid rgba(176,158,140,0.3)', paddingTop: '1.25rem' }}>
+              <div style={{ borderTop: '1px solid var(--taupe-30)', paddingTop: '1.25rem' }}>
                 <p style={{
                   fontFamily: 'Epilogue, sans-serif',
                   fontWeight: 500,
@@ -208,7 +208,7 @@ export default function TestimonialsSection() {
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              background: i === selectedIndex ? 'var(--gold)' : 'rgba(176,158,140,0.4)',
+              background: i === selectedIndex ? 'var(--gold)' : 'var(--taupe-40)',
               transition: 'background 0.3s ease',
             }} />
           </button>

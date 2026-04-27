@@ -11,14 +11,11 @@ const lenis = new Lenis({
   syncTouch: false,
 })
 
-// Expose lenis globally so GSAP ScrollTrigger can sync
+// Expose lenis globally so GSAP ScrollTrigger can sync.
+// Lenis is driven exclusively by the GSAP ticker in LenisScrollTriggerSync
+// (App.jsx) — do NOT add a separate requestAnimationFrame loop here, as that
+// would cause Lenis to advance twice per frame.
 window.__lenis = lenis
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
-requestAnimationFrame(raf)
 
 // ─── Mount ─────────────────────────────────────────────────
 ReactDOM.createRoot(document.getElementById('root')).render(

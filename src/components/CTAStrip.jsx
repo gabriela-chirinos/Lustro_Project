@@ -56,7 +56,7 @@ export default function CTAStrip() {
             textTransform: 'uppercase',
             color: 'var(--warm-white)',
             background: 'transparent',
-            border: '1px solid rgba(196,168,130,0.5)',
+            border: '1px solid var(--gold-50)',
             padding: '1rem 2.5rem',
             cursor: 'none',
             whiteSpace: 'nowrap',

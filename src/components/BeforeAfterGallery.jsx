@@ -48,10 +48,24 @@ function BeforeAfterSlider({ pair }) {
   const onTouchMove  = (e) => { if (dragging.current) updatePosition(e.touches[0].clientX) }
   const onTouchEnd   = () => { dragging.current = false }
 
+  const onKeyDown = (e) => {
+    if (e.key === 'ArrowLeft')  setPosition(p => Math.max(0, p - 5))
+    if (e.key === 'ArrowRight') setPosition(p => Math.min(100, p + 5))
+    if (e.key === 'Home')       setPosition(0)
+    if (e.key === 'End')        setPosition(100)
+  }
+
   return (
     <div>
       <div
         ref={containerRef}
+        role="slider"
+        tabIndex={0}
+        aria-label={`${pair.label} — before and after comparison. Use arrow keys to reveal.`}
+        aria-valuenow={Math.round(position)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuetext={`${Math.round(position)}% revealed`}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
@@ -59,6 +73,7 @@ function BeforeAfterSlider({ pair }) {
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
+        onKeyDown={onKeyDown}
         style={{
           position: 'relative',
           height: '340px',
@@ -66,6 +81,7 @@ function BeforeAfterSlider({ pair }) {
           cursor: 'ew-resize',
           userSelect: 'none',
           borderRadius: '2px',
+          outline: 'none',
         }}
       >
         {/* After panel (full width background) */}
@@ -82,6 +98,7 @@ function BeforeAfterSlider({ pair }) {
             src={pair.after.src}
             alt={`${pair.label} — after`}
             draggable={false}
+            loading="lazy"
             style={{
               position: 'absolute',
               inset: 0,
@@ -100,7 +117,7 @@ function BeforeAfterSlider({ pair }) {
             fontSize: '0.6rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(245,240,232,0.7)',
+            color: 'var(--cream-70)',
           }}>
             {pair.after.label}
           </span>
@@ -121,6 +138,7 @@ function BeforeAfterSlider({ pair }) {
             src={pair.before.src}
             alt={`${pair.label} — before`}
             draggable={false}
+            loading="lazy"
             style={{
               position: 'absolute',
               inset: 0,
@@ -139,7 +157,7 @@ function BeforeAfterSlider({ pair }) {
             fontSize: '0.6rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(245,240,232,0.5)',
+            color: 'var(--cream-50)',
           }}>
             {pair.before.label}
           </span>
@@ -153,7 +171,7 @@ function BeforeAfterSlider({ pair }) {
             bottom: 0,
             left: `${position}%`,
             width: '1px',
-            background: 'rgba(196,168,130,0.6)',
+            background: 'var(--gold-60)',
             transform: 'translateX(-50%)',
             zIndex: 2,
           }}

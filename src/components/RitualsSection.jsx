@@ -125,7 +125,7 @@ export default function RitualsSection() {
                 gap: '0 3rem',
                 alignItems: 'start',
                 padding: '3rem 0',
-                borderTop: '1px solid rgba(176,158,140,0.25)',
+                borderTop: '1px solid var(--taupe-25)',
                 cursor: 'default',
               }}
             >
@@ -197,7 +197,7 @@ export default function RitualsSection() {
             </div>
           ))}
           {/* Bottom border */}
-          <div style={{ borderTop: '1px solid rgba(176,158,140,0.25)' }} />
+          <div style={{ borderTop: '1px solid var(--taupe-25)' }} />
         </div>
 
         {/* Multi-pair note */}

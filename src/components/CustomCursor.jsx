@@ -44,7 +44,7 @@ export default function CustomCursor() {
     const onLeave = () => {
       ring.style.width  = '32px'
       ring.style.height = '32px'
-      ring.style.borderColor = 'rgba(196, 168, 130, 0.6)'
+      ring.style.borderColor = 'var(--gold-60)'
       dot.style.transform = 'translate(-50%, -50%) scale(1)'
     }
 
@@ -83,7 +83,7 @@ export default function CustomCursor() {
         ref={ringRef}
         style={{ position: 'fixed', pointerEvents: 'none', zIndex: 10000,
           width: '32px', height: '32px',
-          border: '1px solid rgba(196, 168, 130, 0.6)',
+          border: '1px solid var(--gold-60)',
           borderRadius: '50%', transform: 'translate(-50%, -50%)',
           transition: 'width 0.3s ease, height 0.3s ease, border-color 0.3s ease',
         }}

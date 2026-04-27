@@ -19,6 +19,7 @@ import ContactSection from './components/ContactSection.jsx'
 import Footer        from './components/Footer.jsx'
 import BackToTop     from './components/BackToTop.jsx'
 import MobileBookingBar from './components/MobileBookingBar.jsx'
+import MobileNewsletterPopup from './components/MobileNewsletterPopup.jsx'
 import CustomCursor  from './components/CustomCursor.jsx'
 import NotFound      from './pages/NotFound.jsx'
 
@@ -32,13 +33,13 @@ function LenisScrollTriggerSync() {
 
     lenis.on('scroll', ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
+    const ticker = (time) => lenis.raf(time * 1000)
+    gsap.ticker.add(ticker)
     gsap.ticker.lagSmoothing(0)
 
     return () => {
       lenis.off('scroll', ScrollTrigger.update)
+      gsap.ticker.remove(ticker)
     }
   }, [])
   return null
@@ -69,9 +70,9 @@ function HomePage() {
       <BeforeAfterGallery />
       <TestimonialsSection />
       <CTAStrip />
-      <FAQSection />
-      <ContactSection />
       <TimelineSection />
+      <ContactSection />
+      <FAQSection />
     </motion.div>
   )
 }
@@ -94,6 +95,7 @@ function AppShell() {
       <Footer />
       <BackToTop />
       <MobileBookingBar />
+      <MobileNewsletterPopup />
     </>
   )
 }

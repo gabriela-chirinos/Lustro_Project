@@ -130,7 +130,7 @@ export default function PhilosophySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            style={{ borderTop: '1px solid rgba(176,158,140,0.25)', paddingTop: '2.5rem' }}
+            style={{ borderTop: '1px solid var(--taupe-25)', paddingTop: '2.5rem' }}
           >
             <p style={{
               fontFamily: 'Epilogue, sans-serif',
