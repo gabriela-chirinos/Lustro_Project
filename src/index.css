@@ -296,9 +296,14 @@ body.menu-open {
   /* Hero: hide etymology corner text on small screens (prevents crowding) */
   .hero-etymology { display: none !important; }
 
-  /* Hero: nudge content up slightly so scroll indicator has room */
+  /* Hero: push content up so scroll indicator has clear breathing room */
   #hero > div[style*="position: relative"] {
-    padding-bottom: 3rem;
+    padding-bottom: 7rem;
+  }
+
+  /* Hero: anchor scroll indicator lower on mobile so it feels deliberate */
+  .hero-scroll-indicator {
+    bottom: 1.5rem !important;
   }
 
   /* Philosophy: stack columns */
