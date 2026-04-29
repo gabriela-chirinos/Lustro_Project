@@ -342,6 +342,12 @@ body.menu-open {
 
   .contact-left  { display: none !important; }
 
+  /* Acuity booking steps: stack on mobile */
+  .acuity-steps {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
   /* Footer: stack columns */
   .footer-grid {
     grid-template-columns: 1fr !important;
