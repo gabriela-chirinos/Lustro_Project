@@ -52,6 +52,7 @@
   --deep-30:  rgba(26,23,20,0.30);
   --deep-55:  rgba(26,23,20,0.55);
   --deep-72:  rgba(26,23,20,0.72);
+  --deep-92:  rgba(26,23,20,0.92);
   --deep-95:  rgba(26,23,20,0.95);
 }
 
@@ -90,40 +91,8 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
+  cursor: auto;
   overflow-x: hidden;
-}
-
-/* ─── Custom Cursor ──────────────────────────────────────── */
-.cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--charcoal);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--gold-60);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
-}
-
-body:has(a:hover) .cursor-ring,
-body:has(button:hover) .cursor-ring {
-  width: 48px;
-  height: 48px;
-  border-color: var(--gold);
 }
 
 /* ─── Ghost Number Utility ───────────────────────────────── */
@@ -172,6 +141,12 @@ section {
   position: relative;
 }
 
+/* ─── Global keyboard focus ──────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 /* ─── Form field focus ───────────────────────────────────── */
 .form-field {
   background: transparent;
@@ -184,6 +159,12 @@ section {
   font-size: 1.125rem;
   color: var(--charcoal);
   transition: border-color 0.25s ease;
+}
+
+.form-field:focus-visible {
+  outline: none;
+  border-bottom-color: var(--gold);
+  box-shadow: 0 2px 0 var(--gold);
 }
 
 .form-field::placeholder {
@@ -238,12 +219,7 @@ body {
   padding-right:  env(safe-area-inset-right);
 }
 
-/* Disable custom cursor on touch / pointer-coarse devices */
-@media (hover: none), (pointer: coarse) {
-  body { cursor: auto !important; }
-  .cursor-dot, .cursor-ring { display: none !important; }
-  button, a, [role="button"], select, input, textarea { cursor: pointer !important; }
-}
+button, a, [role="button"] { cursor: pointer; }
 
 /* ─── Touch target minimum (44×44px — Apple HIG & WCAG) ─── */
 button, a, [role="button"], select {
@@ -346,6 +322,12 @@ body.menu-open {
   .acuity-steps {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
+  }
+
+  /* Founder: stack columns */
+  .founder-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
   }
 
   /* Footer: stack columns */

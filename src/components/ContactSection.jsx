@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const PROCESS = [
   { num: '01', text: 'Select your service and a pickup window that works for you.' },
-  { num: '02', text: 'Complete your $15 deposit — applied to your total at delivery.' },
+  { num: '02', text: 'Complete your $15 deposit, applied to your total at delivery.' },
   { num: '03', text: 'We come to you, do the work, and return your shoes restored.' },
 ]
 

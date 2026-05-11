@@ -1,12 +1,12 @@
 import { useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 
-import beforeLoafer from '../assets/images/before_loafer.png'
-import afterLoafer  from '../assets/images/after_loafer.png'
-import beforeSuade  from '../assets/images/before_suade.png'
-import afterSuade   from '../assets/images/after_suade.png'
-import beforeOxford from '../assets/images/before_oxford.png'
-import afterOxford  from '../assets/images/after_oxford.png'
+import beforeLoafer from '../assets/images/before_loafer.webp'
+import afterLoafer  from '../assets/images/after_loafer.webp'
+import beforeSuade  from '../assets/images/before_suade.webp'
+import afterSuade   from '../assets/images/after_suade.webp'
+import beforeOxford from '../assets/images/before_oxford.webp'
+import afterOxford  from '../assets/images/after_oxford.webp'
 
 const PAIRS = [
   {
@@ -81,7 +81,6 @@ function BeforeAfterSlider({ pair }) {
           cursor: 'ew-resize',
           userSelect: 'none',
           borderRadius: '2px',
-          outline: 'none',
         }}
       >
         {/* After panel (full width background) */}
@@ -314,7 +313,7 @@ export default function BeforeAfterGallery() {
               background: 'transparent',
               border: '1px solid var(--gold)',
               padding: '0.9rem 2.4rem',
-              cursor: 'none',
+              cursor: 'pointer',
             }}
           >
             Book a Ritual

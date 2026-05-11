@@ -130,7 +130,7 @@ export default function MobileNewsletterPopup() {
                     color: 'var(--cream-65)',
                     marginBottom: '2rem',
                   }}>
-                    Seasonal care guides, rare leather spotlights, and first access to open appointments — for those who take their shoes seriously.
+                    Seasonal care guides, rare leather spotlights, and first access to open appointments. For those who take their shoes seriously.
                   </p>
 
                   {/* Form */}
@@ -155,7 +155,6 @@ export default function MobileNewsletterPopup() {
                           background: 'transparent',
                           border: 'none',
                           borderBottom: `1px solid ${emailError ? 'var(--rose-dust)' : 'var(--taupe-30)'}`,
-                          outline: 'none',
                           padding: '0.85rem 0',
                           fontFamily: '"Cormorant Garamond", serif',
                           fontSize: 'max(16px, 1rem)',

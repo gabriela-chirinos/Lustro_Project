@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useBreakpoint } from '../hooks/useBreakpoint.js'
+import { useBooking } from '../context/BookingContext.jsx'
 
 const NAV_LINKS = [
   { label: 'Rituals',    href: '#rituals'    },
@@ -42,6 +43,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { isMobileOrTablet } = useBreakpoint()
+  const { openModal } = useBooking()
 
   // Close menu when resizing to desktop
   useEffect(() => {
@@ -130,7 +132,7 @@ export default function Nav() {
                       letterSpacing: '0.14em',
                       textTransform: 'uppercase',
                       color: scrolled ? 'var(--mid)' : 'var(--cream-75)',
-                      cursor: 'none',
+                      cursor: 'pointer',
                       padding: '0.25rem 0',
                       transition: 'color 0.2s ease',
                     }}
@@ -144,7 +146,7 @@ export default function Nav() {
             </ul>
 
             <motion.button
-              onClick={() => scrollTo('#contact')}
+              onClick={openModal}
               whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)' }}
               transition={{ duration: 0.25 }}
               style={{
@@ -157,7 +159,7 @@ export default function Nav() {
                 background: 'transparent',
                 border: scrolled ? '1px solid var(--gold)' : '1px solid var(--cream-35)',
                 padding: '0.55rem 1.4rem',
-                cursor: 'none',
+                cursor: 'pointer',
                 transition: 'color 0.4s ease, border-color 0.4s ease',
               }}
             >
@@ -171,6 +173,7 @@ export default function Nav() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
             style={{
               background: 'none',
               border: 'none',
@@ -286,7 +289,7 @@ export default function Nav() {
           {/* CTA */}
           <motion.div variants={bottomFadeVariants} style={{ marginTop: '2.5rem' }}>
             <button
-              onClick={() => scrollTo('#contact')}
+              onClick={() => { setMenuOpen(false); openModal() }}
               style={{
                 fontFamily: 'Epilogue, sans-serif',
                 fontWeight: 500,

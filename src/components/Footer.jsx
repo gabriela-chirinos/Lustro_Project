@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useBooking } from '../context/BookingContext.jsx'
 
 const NAV_LINKS = [
   { label: 'Rituals',    href: '#rituals'    },
@@ -9,6 +10,7 @@ const NAV_LINKS = [
 ]
 
 export default function Footer() {
+  const { openModal } = useBooking()
   const scrollTo = (href) => {
     const id = href.replace('#', '')
     const el = document.getElementById(id)
@@ -25,6 +27,7 @@ export default function Footer() {
         background: 'var(--deep)',
         padding: '5rem 5vw 3rem',
         color: 'var(--taupe)',
+        borderTop: '3px solid var(--gold-15)',
       }}
     >
       <div
@@ -82,7 +85,7 @@ export default function Footer() {
           <p style={{
             fontFamily: 'Epilogue, sans-serif',
             fontWeight: 500,
-            fontSize: '0.6rem',
+            fontSize: '0.65rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
             color: 'var(--gold-72)',
@@ -103,7 +106,7 @@ export default function Footer() {
                     fontSize: '0.8rem',
                     letterSpacing: '0.08em',
                     color: 'var(--cream-72)',
-                    cursor: 'none',
+                    cursor: 'pointer',
                     transition: 'color 0.2s ease',
                     padding: 0,
                   }}
@@ -122,7 +125,7 @@ export default function Footer() {
           <p style={{
             fontFamily: 'Epilogue, sans-serif',
             fontWeight: 500,
-            fontSize: '0.6rem',
+            fontSize: '0.65rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
             color: 'var(--gold-72)',
@@ -156,7 +159,7 @@ export default function Footer() {
               <p>10:00 am – 5:00 pm</p>
             </div>
             <button
-              onClick={() => scrollTo('#contact')}
+              onClick={openModal}
               style={{
                 background: 'none',
                 border: 'none',
@@ -166,7 +169,7 @@ export default function Footer() {
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 color: 'var(--gold)',
-                cursor: 'none',
+                cursor: 'pointer',
                 padding: 0,
                 textAlign: 'left',
                 transition: 'opacity 0.2s',
@@ -174,7 +177,7 @@ export default function Footer() {
               onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Request Appointment →
+              Book a Ritual →
             </button>
             <a
               href="https://instagram.com/lustrostudio"

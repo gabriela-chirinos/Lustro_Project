@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import brushesImg from '../assets/images/brushes.png'
+import brushesImg from '../assets/images/brushes.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -52,6 +52,7 @@ export default function BrushParallax() {
         ref={imgRef}
         src={brushesImg}
         alt="Shoe care brushes"
+        loading="lazy"
         style={{
           position: 'absolute',
           inset: 0,

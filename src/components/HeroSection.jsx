@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import heroVideo from '../assets/video/hero.mp4'
+import { useBooking } from '../context/BookingContext.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,8 +18,10 @@ const lineVariant = {
 }
 
 export default function HeroSection() {
+  const { openModal } = useBooking()
   const videoRef   = useRef(null)
   const sectionRef = useRef(null)
+  const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   useEffect(() => {
     const video = videoRef.current
@@ -52,7 +55,7 @@ export default function HeroSection() {
         minHeight: '600px',
         overflow: 'hidden',
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         background: 'var(--deep)',
         marginTop: '0',
       }}
@@ -60,10 +63,11 @@ export default function HeroSection() {
       {/* Video Background */}
       <video
         ref={videoRef}
-        autoPlay
+        autoPlay={!prefersReduced}
         muted
-        loop
+        loop={!prefersReduced}
         playsInline
+        preload="none"
         aria-hidden="true"
         style={{
           position: 'absolute',
@@ -91,8 +95,9 @@ export default function HeroSection() {
         style={{
           position: 'relative',
           zIndex: 2,
-          padding: '0 5vw',
+          padding: '0 5vw clamp(8rem, 15vh, 14rem)',
           maxWidth: '900px',
+          marginLeft: 'max(5vw, 2rem)',
         }}
       >
         <motion.div
@@ -165,11 +170,8 @@ export default function HeroSection() {
           {/* CTA */}
           <motion.div variants={lineVariant}>
             <motion.button
-              onClick={() => {
-                const el = document.getElementById('contact')
-                if (el) window.__lenis?.scrollTo(el, { offset: -80 })
-              }}
-              whileHover={{ backgroundColor: 'var(--deep)', color: 'var(--gold)', borderColor: 'var(--deep)' }}
+              onClick={openModal}
+              whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)', borderColor: 'var(--gold)' }}
               transition={{ duration: 0.25 }}
               style={{
                 fontFamily: 'Epilogue, sans-serif',
@@ -177,15 +179,25 @@ export default function HeroSection() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--deep)',
-                background: 'var(--gold)',
-                border: '1px solid var(--gold)',
+                color: 'var(--gold)',
+                background: 'transparent',
+                border: '1px solid var(--gold-40)',
                 padding: '0.9rem 2.2rem',
-                cursor: 'none',
+                cursor: 'pointer',
               }}
             >
               Book a Ritual
             </motion.button>
+            <p style={{
+              fontFamily: 'Epilogue, sans-serif',
+              fontWeight: 300,
+              fontSize: '0.6rem',
+              letterSpacing: '0.08em',
+              color: 'var(--cream-50)',
+              marginTop: '0.65rem',
+            }}>
+              Starts with a $15 deposit, applied to your total.
+            </p>
           </motion.div>
         </motion.div>
       </div>

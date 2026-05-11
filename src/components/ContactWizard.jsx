@@ -73,7 +73,6 @@ const fieldStyle = (hasError) => ({
   background: 'transparent',
   border: 'none',
   borderBottom: `1px solid ${hasError ? 'var(--rose-dust)' : 'var(--taupe-40)'}`,
-  outline: 'none',
   width: '100%',
   padding: '0.85rem 0',
   fontFamily: '"Cormorant Garamond", serif',
@@ -501,7 +500,7 @@ export default function ContactWizard() {
                         color: 'var(--gold)',
                       }}
                     >
-                      Multi-pair rates apply — we'll include pricing details when we confirm your appointment.
+                      Multi-pair rates apply. We'll include pricing details when we confirm your appointment.
                     </motion.p>
                   )}
                   {errors.pairs && !selectedPairs && (
@@ -518,7 +517,7 @@ export default function ContactWizard() {
                     id="wiz-notes"
                     {...register('notes', {
                       required: 'Please describe your shoes.',
-                      validate: v => v.trim().split(/\s+/).filter(Boolean).length >= 3 || 'Please share a bit more — brand, condition, what you need.',
+                      validate: v => v.trim().split(/\s+/).filter(Boolean).length >= 3 || 'Please share a bit more: brand, condition, what you need.',
                     })}
                     placeholder="Brand, condition, concerns..."
                     rows={5}

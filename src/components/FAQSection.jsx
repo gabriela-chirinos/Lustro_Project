@@ -4,23 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion'
 const FAQS = [
   {
     q: 'How much does it cost?',
-    a: "Services start from $45 for a sneaker clean, and from $95 for a full hand shine and conditioning. A full restoration — resoling, colour correction, deep leather repair — typically ranges from $180 to $380 depending on the work required. We provide a firm, itemised quote before any work begins. No surprises.", // Note to client: Adjust prices to reflect actual rates before launch
+    a: "Services start from $45 for a sneaker clean, and from $95 for a full hand shine and conditioning. A full restoration (resoling, colour correction, deep leather repair) typically ranges from $180 to $380 depending on the work required. We provide a firm, itemised quote before any work begins. No surprises.", // Note to client: Adjust prices to reflect actual rates before launch
   },
   {
     q: 'Do you work on sneakers?',
-    a: 'Selectively, yes. We work on leather and suede uppers. If your sneakers were designed to be worn with a tailored trouser — and made by someone who cares about the leather, we want to see it. Makers like Common Projects, Maison Margiela, Amiri, Golden Goose, Rick Owens, and similar. We don\'t accept athletic footwear: rubber or mesh uppers, anything built for a court or a track. If it\'s a designer sneaker you\'d hesitate to scuff — it probably qualifies. Send us a photograph when you book if you\'re unsure.',
+    a: 'Selectively, yes. We work on leather and suede uppers. If your sneakers were designed to be worn with a tailored trouser, and made by someone who cares about the leather, we want to see it. Makers like Common Projects, Maison Margiela, Amiri, Golden Goose, Rick Owens, and similar. We don\'t accept athletic footwear: rubber or mesh uppers, anything built for a court or a track. If it\'s a designer sneaker you\'d hesitate to scuff, it probably qualifies. Send us a photograph when you book if you\'re unsure.',
   },
   {
     q: 'What brands do you service?',
-    a: "We work with all quality leather footwear — from Alden and Allen Edmonds to Saint Laurent, Berluti, Ferragamo , Crockett & Jones, John Lobb, etc. If it's made well, we can restore it.",
+    a: "We work with all quality leather footwear: Alden, Allen Edmonds, Saint Laurent, Berluti, Ferragamo, Crockett & Jones, John Lobb, and others. If it's made well, we can restore it.",
   },
   {
     q: 'How long does a full restoration take?',
-    a: 'A Full Restoration typically takes 5–7 business days. More complex work — significant colour correction, welt rebuilding — may require up to 10 days.',
+    a: 'A Full Restoration typically takes 5–7 business days. More complex work (significant colour correction, welt rebuilding) may require up to 10 days.',
   },
   {
     q: 'Do I need to ship my shoes or can I drop off?',
-    a: 'We serve the greater Los Angeles area directly — pickup and return are coordinated at the time of booking. For clients outside of LA, shipping is an option. Reach out and we\'ll work out the details together.',
+    a: 'We serve the greater Los Angeles area directly. Pickup and return are coordinated at the time of booking. For clients outside of LA, shipping is an option. Reach out and we\'ll work out the details together.',
   },
   {
     q: 'What products do you use?',
@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     q: 'Do you offer a guarantee?',
-    a: " Every pair that leaves carries our name on the result. If the work doesn't meet the standard agreed at consultation, we will address it — completely, and at no additional charge.",
+    a: "Every pair that leaves carries our name on the result. If the work doesn't meet the standard agreed at consultation, we will address it. Completely, and at no additional charge.",
   },
 ]
 
@@ -50,7 +50,7 @@ function FAQItem({ q, a, isOpen, onToggle, id }) {
           width: '100%',
           background: 'none',
           border: 'none',
-          cursor: 'none',
+          cursor: 'pointer',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -154,8 +154,8 @@ export default function FAQSection() {
             lineHeight: 1.15,
             color: 'var(--charcoal)',
           }}>
-            Common questions.<br />
-            <em style={{ fontWeight: 400 }}>Honest answers.</em>
+            Before you book.<br />
+            <em style={{ fontWeight: 400 }}>Everything you need to know.</em>
           </h2>
         </motion.div>
 

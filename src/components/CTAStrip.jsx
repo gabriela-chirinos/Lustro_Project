@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion'
+import { useBooking } from '../context/BookingContext.jsx'
 
 export default function CTAStrip() {
-  const scrollToContact = () => {
-    const el = document.getElementById('contact')
-    if (el) window.__lenis?.scrollTo(el, { offset: -80 })
-  }
+  const { openModal } = useBooking()
 
   return (
     <section
@@ -45,7 +43,7 @@ export default function CTAStrip() {
         transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
       >
         <motion.button
-          onClick={scrollToContact}
+          onClick={openModal}
           whileHover={{ backgroundColor: 'var(--gold)', color: 'var(--deep)', borderColor: 'var(--gold)' }}
           transition={{ duration: 0.25 }}
           style={{
@@ -58,12 +56,23 @@ export default function CTAStrip() {
             background: 'transparent',
             border: '1px solid var(--gold-50)',
             padding: '1rem 2.5rem',
-            cursor: 'none',
+            cursor: 'pointer',
             whiteSpace: 'nowrap',
           }}
         >
           Book a Ritual
         </motion.button>
+        <p style={{
+          fontFamily: 'Epilogue, sans-serif',
+          fontWeight: 300,
+          fontSize: '0.58rem',
+          letterSpacing: '0.08em',
+          color: 'var(--cream-35)',
+          marginTop: '0.6rem',
+          textAlign: 'center',
+        }}>
+          Starts with a $15 deposit, applied to your total.
+        </p>
       </motion.div>
     </section>
   )

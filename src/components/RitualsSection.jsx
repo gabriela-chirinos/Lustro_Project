@@ -11,7 +11,7 @@ const RITUALS = [
     name: 'The Hand Shine',
     tagline: 'The standard everything else is measured against.',
     description:
-      'Each pair begins with a thorough clean and a conditioning pass — reading the leather before anything is applied. Five layers of wax follow, worked in by hand and burnished with bone to a depth no machine can replicate.',
+      'Each pair begins with a thorough clean and a conditioning pass, reading the leather before anything is applied. Five layers of wax follow, worked in by hand and burnished with bone to a depth no machine can replicate.',
     price: 'From $95',
   },
   {
@@ -124,8 +124,9 @@ export default function RitualsSection() {
                 gridTemplateColumns: '80px 1fr auto',
                 gap: '0 3rem',
                 alignItems: 'start',
-                padding: '3rem 0',
+                padding: num === '04' ? '3rem 1.5rem' : '3rem 0',
                 borderTop: '1px solid var(--taupe-25)',
+                background: num === '04' ? 'var(--gold-10)' : 'transparent',
                 cursor: 'default',
               }}
             >
@@ -176,9 +177,9 @@ export default function RitualsSection() {
               <div className="ritual-meta" style={{ textAlign: 'right', paddingTop: '0.25rem', minWidth: '120px' }}>
                 <p style={{
                   fontFamily: 'Epilogue, sans-serif',
-                  fontWeight: 500,
-                  fontSize: '1rem',
-                  color: 'var(--charcoal)',
+                  fontWeight: 600,
+                  fontSize: '1.15rem',
+                  color: 'var(--gold)',
                   marginBottom: '0.4rem',
                 }}>
                   {price}

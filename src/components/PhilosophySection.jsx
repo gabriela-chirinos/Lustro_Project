@@ -10,7 +10,7 @@ const PILLARS = [
   {
     num: '01',
     title: 'The Consultation',
-    body: 'Every pair tells a story. We begin by listening — to the leather, the wear patterns, the life lived inside the shoe. No two assessments are alike.',
+    body: 'Every pair tells a story. We begin by listening: to the leather, the wear patterns, the life lived inside the shoe. No two assessments are alike.',
   },
   {
     num: '02',
@@ -20,7 +20,7 @@ const PILLARS = [
   {
     num: '03',
     title: 'The Treatment',
-    body: 'Conditioners drawn from natural oils — neatsfoot, lanolin, beeswax — are worked into the grain in slow, circular passes. The leather drinks what it needs.',
+    body: 'Conditioners drawn from natural oils (neatsfoot, lanolin, beeswax) are worked into the grain in slow, circular passes. The leather drinks what it needs.',
   },
   {
     num: '04',
@@ -60,7 +60,7 @@ export default function PhilosophySection() {
       id="philosophy"
       ref={sectionRef}
       style={{
-        background: 'var(--warm-white)',
+        background: 'var(--parchment)',
         padding: '8rem 0',
         position: 'relative',
       }}
@@ -117,7 +117,7 @@ export default function PhilosophySection() {
             color: 'var(--mid)',
           }}
         >
-          From Latin and Italian — <b>Lustro</b> : to shine, to illuminate, to purify through polish
+          From Latin and Italian: <b>Lustro</b>. To shine, to illuminate, to purify through polish.
         </motion.p>
       </div>
 
