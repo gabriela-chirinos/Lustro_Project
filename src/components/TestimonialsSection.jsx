@@ -197,7 +197,7 @@ export default function TestimonialsSection() {
               border: 'none',
               padding: '10px',
               boxSizing: 'content-box',
-              cursor: 'none',
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

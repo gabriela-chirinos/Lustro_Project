@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useBreakpoint } from '../hooks/useBreakpoint.js'
+import { useBooking } from '../context/BookingContext.jsx'
 
 export default function MobileBookingBar() {
   const { isMobileOrTablet } = useBreakpoint()
+  const { openModal } = useBooking()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -49,10 +51,7 @@ export default function MobileBookingBar() {
             Ready to restore your shoes?
           </p>
           <button
-            onClick={() => {
-              const el = document.getElementById('contact')
-              if (el) window.__lenis?.scrollTo(el, { offset: -80 })
-            }}
+            onClick={openModal}
             style={{
               fontFamily: 'Epilogue, sans-serif',
               fontWeight: 500,

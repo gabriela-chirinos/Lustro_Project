@@ -105,7 +105,7 @@ export default function NotFound() {
             background: 'transparent',
             border: '1px solid var(--gold)',
             padding: '0.75rem 1.75rem',
-            cursor: 'none',
+            cursor: 'pointer',
           }}
         >
           Return Home
