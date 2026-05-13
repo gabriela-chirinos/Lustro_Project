@@ -192,10 +192,10 @@ export default function BookingModal() {
                 }}>
                   Having trouble? Email us at{' '}
                   <a
-                    href="mailto:hello@lustro.studio"
+                    href="mailto:lustroshoecare@gmail.com"
                     style={{ color: 'var(--gold)', textDecoration: 'none' }}
                   >
-                    hello@lustro.studio {/* TODO: Replace with real email before launch */}
+                    lustroshoecare@gmail.com
                   </a>
                 </p>
               </div>

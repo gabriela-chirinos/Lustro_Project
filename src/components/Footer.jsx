@@ -150,7 +150,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 style={{ color: 'inherit', textDecoration: 'none' }}
               >
-                <p style={{ color: 'var(--cream-82)' }}>West Hollywood, CA {/* TODO: Replace with real Google Maps URL with exact studio address before launch */}</p>
+                <p style={{ color: 'var(--cream-82)' }}>West Hollywood, CA</p>
               </a>
               <p>By Appointment Only</p>
             </div>

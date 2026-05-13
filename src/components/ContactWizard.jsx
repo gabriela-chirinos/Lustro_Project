@@ -615,7 +615,7 @@ export default function ContactWizard() {
 
                   {submitError && (
                     <span style={{ ...errorStyle, marginTop: 0 }}>
-                      Something went wrong. Please email us at hello@lustro.studio
+                      Something went wrong. Please email us at lustroshoecare@gmail.com
                     </span>
                   )}
                 </>
