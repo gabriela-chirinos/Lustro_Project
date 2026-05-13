@@ -15,6 +15,7 @@ import BeforeAfterGallery from './components/BeforeAfterGallery.jsx'
 import TestimonialsSection from './components/TestimonialsSection.jsx'
 import CTAStrip      from './components/CTAStrip.jsx'
 import FounderSection from './components/FounderSection.jsx'
+import BootsShowcase  from './components/BootsShowcase.jsx'
 import TimelineSection from './components/TimelineSection.jsx'
 import FAQSection    from './components/FAQSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
@@ -74,6 +75,7 @@ function HomePage() {
       <BeforeAfterGallery />
       <TestimonialsSection />
       <FounderSection />
+      <BootsShowcase />
       <CTAStrip />
       <TimelineSection />
       <ContactSection />

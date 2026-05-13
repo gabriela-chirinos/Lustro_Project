@@ -37,8 +37,8 @@ export default function BrushParallax() {
       className="brush-parallax-section"
       style={{
         position: 'relative',
-        height: '100vh',
-        minHeight: '640px',
+        height: '45vh',
+        minHeight: '320px',
         background: 'var(--parchment)',
         overflow: 'hidden',
         display: 'flex',

@@ -7,6 +7,10 @@ import beforeSuade  from '../assets/images/before_suade.webp'
 import afterSuade   from '../assets/images/after_suade.webp'
 import beforeOxford from '../assets/images/before_oxford.webp'
 import afterOxford  from '../assets/images/after_oxford.webp'
+import beforeBlue   from '../assets/images/blue_before.webp'
+import afterBlue    from '../assets/images/blue_after.webp'
+import beforeBrown  from '../assets/images/before_brown.webp'
+import afterBrown   from '../assets/images/after_brown.webp'
 
 const PAIRS = [
   {
@@ -27,9 +31,24 @@ const PAIRS = [
     after:  { src: afterOxford,  label: 'After'  },
     note: 'Colour matched by eye. Applied by hand.',
   },
+  {
+    label: 'Navy Double Monk',
+    before: { src: beforeBlue, label: 'Before' },
+    after:  { src: afterBlue,  label: 'After'  },
+    note: 'Deep conditioning. Colour revived.',
+    objectPosition: 'center 65%',
+  },
+  {
+    label: 'Dark Walnut Monk Strap',
+    before: { src: beforeBrown, label: 'Before' },
+    after:  { src: afterBrown,  label: 'After'  },
+    note: 'Full restoration. Mirror shine finish.',
+    objectPosition: 'center 65%',
+  },
 ]
 
 function BeforeAfterSlider({ pair }) {
+  const imgPos = pair.objectPosition || 'center'
   const [position, setPosition] = useState(50)
   const containerRef = useRef(null)
   const dragging = useRef(false)
@@ -104,7 +123,7 @@ function BeforeAfterSlider({ pair }) {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center',
+              objectPosition: imgPos,
               pointerEvents: 'none',
             }}
           />
@@ -144,7 +163,7 @@ function BeforeAfterSlider({ pair }) {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
-              objectPosition: 'center',
+              objectPosition: imgPos,
               pointerEvents: 'none',
             }}
           />

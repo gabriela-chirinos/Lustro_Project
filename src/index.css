@@ -263,10 +263,9 @@ body.menu-open {
     padding-right: 5vw !important;
   }
 
-  /* Brush parallax: reduce from 100vh to a comfortable 60vh */
   .brush-parallax-section {
-    height: 60vh !important;
-    min-height: 380px !important;
+    height: 40vh !important;
+    min-height: 260px !important;
   }
 
   /* Hero: hide etymology corner text on small screens (prevents crowding) */
@@ -283,6 +282,10 @@ body.menu-open {
   }
 
   /* Philosophy: stack columns */
+  #philosophy {
+    padding-bottom: 2rem !important;
+  }
+
   .philosophy-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -299,6 +302,21 @@ body.menu-open {
   .philosophy-right {
     padding: 0 !important;
     gap: 3rem !important;
+  }
+
+  /* Boots showcase: reduce top gap on mobile — shares dark bg with FounderSection */
+  .boots-showcase {
+    padding-top: 1.5rem !important;
+  }
+
+  /* Shoe showcase: stack on mobile */
+  .shoe-showcase-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .shoe-showcase-grid img {
+    height: 52vw !important;
+    min-height: 260px !important;
   }
 
   /* Rituals: stack the row, hide ghost number */
